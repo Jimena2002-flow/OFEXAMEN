@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jimena Flores - Portafolio Ambiental</title>
+  <meta name="author" content="Jimena Flores" />
+  <link rel="icon" href="favicon_blog.ico" />
+  <style>
+    /* ===============================
+   Variables y Configuración Global
+    =============================== */
+    :root {
+      --verde-agua: #88c9bf;
+      --marron-tierra: #8d6e63;
+      --gris-suave: #f7f7f6;
+      --texto: #24323a;
+      --fondo-card: #ffffff;
+      --maxW: 1100px;
+      --radius: 10px;
+      --accent: var(--verde-agua);
+      --accent-2: var(--marron-tierra);
+      --transition: 0.28s;
+      --firma: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--firma);
+      margin: 0;
+      background: var(--gris-suave);
+      color: var(--texto);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===============================
+      Header
+    =============================== */
+    header {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header .wrap {
+      max-width: var(--maxW);
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    header img.logo { height: 56px; border-radius: 8px; }
+    header .titulo { margin-left: 1rem; }
+    header h1 { margin: 0; font-size: 1.6rem; }
+    header p { margin: 0.25rem 0 0; font-size: 0.95rem; opacity: 0.95; }
+
+    /* ===============================
+      Navbar
+    =============================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      padding: .6rem 1rem;
+    }
+    .nav-inner {
+      max-width: var(--maxW);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: .5rem; }
+    .brand img { height: 36px; }
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      display: inline-block;
+      padding: .45rem .7rem;
+      border-radius: 6px;
+      color: var(--texto);
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    nav a:hover { background: #f1f1f1; }
+    .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; }
+
+    /* ===============================
+      Main
+    =============================== */
+    main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
+
+    /* ===============================
+      Hero / Destacado
+    =============================== */
+    .destacado {
+      background: var(--fondo-card);
+      border-radius: var(--radius);
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      border-left: 6px solid var(--accent);
+      align-items: center;
+    }
+    .destacado img {
+      width: 320px; height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .destacado .meta h2 { margin: 0 0 .4rem; font-size: 1.35rem; }
+    .destacado .meta p { margin: 0; color: #445; }
+    .destacado .meta .cta {
+      display: inline-block;
+      margin-top: .8rem;
+      background: var(--accent-2);
+      color: #fff;
+      padding: .45rem .8rem;
+      border-radius: 8px;
+    }
+
+    /* ===============================
+      Blog / Sidebar
+    =============================== */
+    .contenido-blog {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .barra-lateral {
+      flex: 1;
+      min-width: 220px;
+      background: #eaf6f1;
+      padding: 14px;
+      border-radius: 8px;
+    }
+    .barra-lateral h3 { margin-top: 0; }
+    .barra-lateral ul {
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .barra-lateral li {
+      list-style: none;
+      padding: .5rem;
+      border-radius: 6px;
+      background: #bfe7db;
+      cursor: pointer;
+    }
+    .articulo-dinamico {
+      flex: 2; min-width: 320px;
+      background: var(--fondo-card);
+      padding: 18px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(20,20,20,0.04);
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all .6s ease;
+    }
+    .articulo-dinamico.visible { opacity: 1; transform: none; }
+    .articulos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .articulos article {
+      background: var(--fondo-card);
+      padding: 14px;
+      border-radius: 8px;
+      border-left: 6px solid var(--accent);
+    }
+    .articulos h3 { margin: 0 0 .4rem; }
+
+    /* ===============================
+      Carousel
+    =============================== */
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1075px;
+      height: 300px;
+      overflow: hidden;
+    }
+    .carousel img {
+      display: none;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .carousel img.active { display: block; }
+    .carousel button {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* ===============================
+      Proyectos / Portfolio
+    =============================== */
+    #proyectos {
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+    #proyectos h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+    #proyectos hr {
+      border: none;
+      height: 1px;
+      background: #ddd;
+      margin: 1rem 0;
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .filter-btn {
+      padding: .5rem 1rem;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      background: #f8f8f8;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover { background: #e0e0e0; border-color: #888; }
+    .filter-btn.active {
+      background: #50742f;
+      color: white;
+      border-color: #50742f;
+    }
+    .work-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .work-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .work-card img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+    .work-card .meta { padding: 1rem; }
+    .work-card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+    .work-card p { font-size: .9rem; margin-bottom: .5rem; }
+    .work-card .work-button {
+      display: inline-block;
+      margin-top: .5rem;
+      font-size: .9rem;
+      color: #247a2a;
+      cursor: pointer;
+      transition: color .3s ease;
+    }
+    .work-card .work-button:hover { color: #292e20; }
+
+    .portfolio-item-details {
+      display: none;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    /* Animación filtrado */
+    .work-card[style*="display: none"] {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .work-card {
+      transition: all 0.4s ease;
+    }
+
+    /* ===============================
+      Sobre Mí
+    =============================== */
+    .sobre-mi {
+      position: relative;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, #d8d78d, #e0f7fa);
+      overflow: hidden;
+    }
+    .sobre-mi-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+    .sobre-mi .texto {
+      flex: 1; min-width: 280px;
+      animation: fadeInUp 1s ease forwards;
+    }
+    .sobre-mi .imagen {
+      flex: 1; min-width: 250px;
+      animation: fadeInRight 1.2s ease forwards;
+    }
+
+    .sobre-mi .imagen img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(0);
+      transition: transform .3s ease;
+    }
+    .sobre-mi .imagen img:hover {
+      transform: translateY(-10px) scale(1.03);
+    }
+    .btn-cv {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .7rem 1.4rem;
+      background: #1e4114;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all .3s ease;
+    }
+    .btn-cv:hover {
+      background: #e8f34a;
+      transform: scale(1.05);
+    }
+
+    /* ===============================
+    Popup de Portfolio
+    =================================*/
+    .portfolio-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .3s ease;
+      z-index: 9999;
+    }
+
+    .portfolio-popup.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .portfolio-popup-inner {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: popupScale .3s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .portfolio-popup-inner img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .portfolio-popup-inner .details-title {
+      margin-top: 0.5rem;
+      font-size: 1.3rem;
+      color: #247a2a;
+    }
+
+    .portfolio-popup-inner .details-info {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .portfolio-popup-inner .details-info li {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .pp-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #444;
+      cursor: pointer;
+      transition: color .3s;
+    }
+
+    .pp-close:hover {
+      color: #247a2a;
+    }
+
+    /* Animación */
+    @keyframes popupScale {
+      from { transform: scale(0.8); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .portfolio-popup-inner {
+        max-width: 95%;
+        border-radius: 8px;
+      }
+      .pp-close {
+        font-size: 1.6rem;
+      }
+    }
+
+
+
+    /* ===============================
+      Footer y Extras
+    =============================== */
+    footer {
+      background: var(--accent-2);
+      color: #fff;
+      padding: 1.2rem;
+      margin-top: 2rem;
+    }
+    footer .flex { display: flex; gap: 1rem; align-items: center; justify-content: center; }
+    .input-container { position: relative; margin-top: 1rem; }
+    .input {
+      width: 100%;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #dcdcdc;
+    }
+    .input:focus { outline: none; border-color: var(--accent); }
+    .input-container label {
+      position: absolute;
+      left: 12px; top: 10px;
+      transition: all .18s;
+      font-size: .95rem;
+      color: #777;
+    }
+    .input-container.focus label {
+      top: -10px;
+      font-size: .78rem;
+      color: var(--accent);
+    }
+
+    /* ===============================
+      Responsive
+    =============================== */
+    @media (max-width: 800px) {
+      header .wrap { flex-direction: column; align-items: flex-start; }
+      .destacado { flex-direction: column; }
+      .carousel { width: 100%; }
+      nav ul { display: none; }
+      .menu-toggle { display: block; }
+    }
+    @media (max-width: 768px) {
+      .sobre-mi-container { flex-direction: column-reverse; align-items: center; }
+      .sobre-mi .imagen { margin-bottom: 2rem; }
+      nav ul.show {
+        display: flex;
+        flex-direction: column;
+        background: #f4f4f4;
+        position: absolute;
+        top: 60px; right: 10px;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header id="Inicio">
+    <div class="wrap" >
+      <img src="img/logo_blanco.png" alt="Logo" class="logo"/>
+      <div class="titulo">
+        <h1>Jimena Flores — Portafolio </h1>
+        <p> · Medio Ambiente y Seguridad · </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="img/image-removebg-preview (1).png" alt="logo"/>
+      </div>
+      
+      <!-- Botón hamburguesa -->
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      
+      <nav>
+        <ul id="nav-list">
+          <li><a href="#Inicio">Inicio</a></li>
+          <li><a href="#SobreMi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#articulos">Artículos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- Carrusel (Swiper) -->
+  <div class="carousel">
+    <img src="img/paisaje huasta campamento.jpg" class="active" alt="Imagen 1">
+    <img src="img/huasta apuntando.jpg" alt="Imagen 2">
+    <img src="img/charla de seguridad 2023.jpg" alt="Imagen 3">
+
+    <button class="prev">⟨</button>
+    <button class="next">⟩</button>
+  </div>
+
+
+    
+  <!-- Contenido principal: barra lateral + articulo dinamico -->
+  <div class="contenido-blog">
+    <aside class="barra-lateral">
+      <h3>Mis Destacados</h3>
+      <ul id="lista-articulos">
+        <li data-index="0">🌱 ¿Qué es la Ingeniería Ambiental?</li>
+        <li data-index="1">🌊 Impacto de los Microplásticos</li>
+        <li data-index="2">🧪 Toxicología de Suelos</li>
+        <li data-index="3">🌍 Geografía Ambiental</li>
+        <li data-index="4">➗ Matemáticas para la Vida</li>
+        <li data-index="5">🦠 Ciencias Ambientales en tiempos de COVID-19</li>
+        <li data-index="6">🔎 Herramientas de Investigación</li>
+        <li data-index="7">🗺️ Ordenamiento Territorial</li>
+        <li data-index="8">📡 Sistemas de Información Geográfica (SIG)</li>
+        <li data-index="9">📊 Estadística aplicada a la investigación ambiental</li>
+      </ul>
+    </aside>
+
+    <section class="articulo-dinamico" id="articulo-dinamico">
+      <h2 id="titulo-articulo"> Explora conmigo lo que más aprendi en 10 ciclos de Ciencias Ambientales</h2>
+      <p id="contenido-articulo">Aquí aparecerá el contenido de los temas que esta en el menu de mis destacados </p>
+    </section>
+  </div>
+
+  <!-- Tengo que agregar una section mia-->
+  <section id="SobreMi" class="sobre-mi">
+    <div class="sobre-mi-container">
+      <div class="texto">
+        <h2>¿Quién es Jimena?</h2>
+        <p>
+          Soy una apasionada egresada de Ciencias Ambientales en la Universidad Católica Sedes Sapientiae de Perú.
+          Desde pequeña, he sentido una profunda conexión con la naturaleza y un fuerte deseo de proteger nuestro planeta.
+        </p>
+        <p>
+          A lo largo de mi formación académica, he adquirido conocimientos en gestión ambiental, evaluación de impacto,
+          conservación de recursos naturales y sostenibilidad. He participado en proyectos y prácticas que me han permitido aplicar 
+          estos conocimientos en situaciones reales.
+        </p>
+        <h3><strong>Ingresa a Revisar mi CV Digital</strong></h3>
+        <a href="####" class="btn-cv">Ver CV</a>
+      </div>
+      <div class="imagen">
+        <img src="img/huasta paisaje.jpg" alt="Jimena Flores">
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Proyectos / Work -->
+  <section id="proyectos" style="margin-top:1.5rem">
+
+    <hr style="margin:12px 0"/>
+      <h4>Filtros de proyectos</h4>
+      <div class="controls">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter=".seguridad">Seguridad</button>
+        <button class="filter-btn" data-filter=".experiencias">Experiencias</button>
+        <button class="filter-btn" data-filter=".voluntariado">Voluntariado</button>
+      </div>
+    <hr>
+
+    <h2 style="text-align:center">Proyectos y Trabajos</h2>
+
+    <div class="work-container mix-container" id="work-container">
+      <!-- tarjetas: mezcla (mixitup) -->
+      <!-- Temas de Seguridad -->
+      <div class="work-card mix seguridad">
+        <img src="img/Inicios en Seguridad 2023.jpg" alt="Seguridad">
+        <div class="meta">
+          <h3> Charla inicial de Seguridad </h3>
+          <p>La constancia y la charlas diarias en mi primer trabajo de: Asistente SSOMA</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Charlas </h3>
+            <p class="details-description">...</p>
+            <ul class="details-info"><li>Creado - <span>Febrero 2022</span></li><li>Tecnologías - <span>muestreo | GIS</span></li></ul>
+          </div>
+        </div>
+      </div>
+      <!-- Experiencias -->
+      <div class="work-card mix experiencias">
+        <img src="img/decidimos montar en cmaioneta piura.jpg" alt="amistad">
+        <div class="meta">
+          <h3>Viaje lejos de casa </h3>
+          <p>Aventura de mas de 8 horas sobre 4 ruedas y con vistas extraordinarias</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Viaje en Huancabamba en la parte trasera una camioneta con mis amigos de la uni   </h3>
+            <img src="img/atarceder piura.jpg" alt="brigada" style="width:100%;margin-top:8px;border-radius:6px"/>
+            <p class="details-description">Me considero una persona aventurera para viajar mas de 8 hr para llegar a la sierra de huacabamba, pero a que? pues era a un trabajo de la Onpe con mis amigos de la universidad, eramos personas con hambre poner pagar nuestros estudios, entonces en medio de inii</p>
+            
+            <ul class="details-info"><li>Creado - <span>May 2024</span></li><li>Rol - <span>Coordinación</span></li></ul>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Voluntariados -->
+      <div class="work-card mix voluntariado">
+        <img src="img/Voluntariado 2017 - Distinto.jpg" alt="Huerto">
+        <div class="meta">
+          <h3>Mi primer Voluntariado DISTINTO</h3>
+          <p>Diseño e implementación de huerto comunitario — voluntariado local.</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Huerto urbano</h3>
+            <p class="details-description">Coordinación con vecinos y técnicas orgánicas de compostaje.</p>
+            <img src="img/mesa de trabajo distinto 2017.jpg" alt="Huerto 1" style="width:100%;margin-top:8px;border-radius:6px"/>
+            
+            <ul class="details-info"><li>Creado - <span>May 2024</span></li><li>Rol - <span>Coordinación</span></li></ul>
+            
+          </div>
+        </div>
+      </div>
+      <!-- Temas de Seguridad -->
+      <div class="work-card mix seguridad">
+        <img src="img/charla de seguridad 2023.jpg" alt="Seguridad">
+        <div class="meta">
+          <h3> Reunion de Seguridad </h3>
+          <p>Inportancia de la seguridad </p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">reuniones </h3>
+            <p class="details-description">...</p>
+            <ul class="details-info"><li>Creado - <span>Febrero 2022</span></li><li>SSOMA - <span>Prevencion de riesgos </span></li></ul>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="work-card mix experiencias">
+        <img src="img/ucss- brigada residencia universitaria.jpg" alt="brigada">
+        <div class="meta">
+          <h3>¿Voluntario o Universitario?</h3>
+          <p>...</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">En mi universidad se formo un grupo de voluntariado - Brigada </h3>
+            <p class="details-description">Coordinación con vecinos y técnicas orgánicas de compostaje.</p>
+            
+            <ul class="details-info"><li>Creado - <span>May 2024</span></li><li>Rol - <span>Coordinación</span></li></ul>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card mix seguridad">
+        <img src="img/charla de seguridad 2023.jpg" alt="Seguridad">
+        <div class="meta">
+          <h3> Reunion de Seguridad </h3>
+          <p>Inportancia de la seguridad </p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">reuniones </h3>
+            <p class="details-description">...</p>
+            <ul class="details-info"><li>Creado - <span>Febrero 2022</span></li><li>SSOMA - <span>Prevencion de riesgos </span></li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card mix voluntariado">
+        <img src="img/campañas voluntariado navideños 2019.jpg" alt="Campaña">
+        <div class="meta">
+          <h3>Navidad con Niños</h3>
+          <p>Charlas educativas en centros escolares sobre reciclaje y gestión del agua.</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Sensibilización</h3>
+            <p class="details-description">Diseño de materiales y actividades prácticas para niños.</p>
+            <ul class="details-info"><li>Creado - <span>Jul 2023</span></li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card mix experiencias">
+        <img src="img/ucss - lima comunion y liberacion.jpg" alt="residencia">
+        <div class="meta">
+          <h3>Espacio de Liberacion universitaria</h3>
+          <p>...</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Nunca espere vivir un momento como este en mi primer año de la universidad </h3>
+            <p class="details-description">Encontre un grupo hermoso en la universidad, 
+            Comunion y Liberacion donde el espacio era poder entrar en nosotros mismo identificar quienes somos y que meta tenemos cada uno.</p>
+            
+            <ul class="details-info"><li>Creado - <span>Octubre  2019</span></li><li>Rol - <span>Experiencias</span></li></ul>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card mix voluntariado">
+        <img src="img/RlOMAS- VOLUNTARIADOS LOMAS DE CARAVAILLO.jpg" alt="Campaña de Limpieza">
+        <div class="meta">
+          <h3>Limpieza en Lomas</h3>
+          <p>Lomas de Carabayllo, Area natura proeguida privada</p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Sensibilización</h3>
+            <p class="details-description">Diseño de materiales y actividades prácticas para niños.</p>
+            <ul class="details-info"><li>Creado - <span>Jul 2023</span></li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card mix voluntariado">
+        <img src="img/RNL - Equivo voluntario.jpg" alt="Campaña de Limpieza">
+        <div class="meta">
+          <h3>mi paso por las Lomas de Lachay</h3>
+          <p>Lomas de Lachay ubicada entre Chancay y Huacho, casi tres meses de actividades diversas </p>
+          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+          <div class="portfolio-item-details" style="display:none">
+            <h3 class="details-title">Sensibilización</h3>
+            <p class="details-description">Pude aprender muchas especies de flora y fauna al haber pasado por mis estudios vitales, supe aprovechar cada convocatoria 
+              que se presentaba para ser un voluntario guarparque en una de las reservas mas importantes de lima provincias. 
+            </p>
+            <ul class="details-info"><li>Creado - <span>Jul 2023</span></li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio popup -->
+  
+      <div class="portfolio-popup" id="portfolio-popup">
+        <div class="portfolio-popup-inner">
+          <span class="pp-close" id="pp-close">&times;</span>
+          <div id="pp-content"></div>
+        </div>
+      </div>
+    
+    <!-- Services modal skeleton (reused if needed) -->
+      <div class="services-modal" id="services-modal">
+        <div class="services-modal-content">
+          <button id="services-modal-close" style="float:right;background:none;border:none;font-size:1.2rem">✕</button>
+          <h3 id="services-modal-title">Título</h3>
+          <p id="services-modal-body">Contenido</p>
+        </div>
+      </div>
+
+
+  </section>
+  
+  <hr style="margin: 40px;">
+
+      <!-- Artículos resumen -->
+  <section id="articulos" class="articulos">
+    <div>
+      <h2 style="text-align:center">Artículos Recientes</h2>
+      <p style="text-align:center">Explora mis escritos sobre temas ambientales y de sostenibilidad.</p>
+    </div>
+      <article>
+        <h3>Seguridad laboral en obras de construcción</h3>
+        <p>Buenas prácticas para reducir riesgos en altura, manipulación de materiales y maquinaria pesada.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Cambio climático y gestión de riesgos</h3>
+        <p>Análisis de cómo los fenómenos climáticos extremos afectan a las comunidades y las medidas preventivas necesarias.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Gestión de residuos en proyectos de infraestructura</h3>
+        <p>Estrategias de segregación, reciclaje y valorización aplicadas en obras civiles y urbanas.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Ruido ocupacional y salud en el trabajo</h3>
+        <p>Evaluación de la exposición prolongada al ruido y medidas de control en espacios industriales.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Evaluación de impacto ambiental en obras viales</h3>
+        <p>Metodologías aplicadas para medir efectos sobre suelo, agua y aire en proyectos de transporte.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Ergonomía en el entorno laboral</h3>
+        <p>Adaptación de los puestos de trabajo para prevenir lesiones y mejorar la productividad.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Gestión de emergencias y planes de contingencia</h3>
+        <p>Diseño de protocolos de evacuación y respuesta ante incidentes en entornos industriales y comunitarios.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+      <article>
+        <h3>Energías renovables y sostenibilidad</h3>
+        <p>Beneficios ambientales y sociales de la transición hacia fuentes limpias en zonas urbanas y rurales.</p>
+        <a href="#">Leer artículo</a>
+      </article>
+
+
+  </section>
+
+
+  </main>
+
+  <footer id="contacto">
+    <div style="max-width:var(--maxW);margin:0 auto;padding:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+      <div>
+        <strong>Jimena Flores</strong>
+        <div>Estudiante Ingeniería Ambiental · Beasain</div>
+      </div>
+
+      <div class="flex">
+        <div id="contador-visitas" style="font-weight:700"></div>
+        <div>
+          <a href="mailto:jfgarro13@gmail.com" style="color:#fff;text-decoration:underline">jfgarro13@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin:8px 0 0">&copy; 2025 Bitácora Ambiental — Jimena Flores</p>
+  </footer>
+
+  
+  <!-- Scripts: MixItUp, Swiper, and main JS -->
+
+  <script>
+    // Interactividad: menú responsive
+    const menuToggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle && menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('show');
+    });
+
+    // Cerrar menú al hacer clic en un enlace (opcional)
+    document.querySelectorAll('#nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('show');
+      });
+    });
+
+
+    // ---- Interactividad: Swiper (carrusel) ----
+    
+    const images = document.querySelectorAll('.carousel img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let index = 0;
+
+    // Mostrar la imagen según el índice
+    function showImage(i) {
+      images.forEach(img => img.classList.remove('active'));
+      images[i].classList.add('active');
+    }
+
+    // Botón anterior
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    });
+
+    // Botón siguiente
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
+
+    // 🔹 Funcionalidad automática cada 3 segundos
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    }, 3000); // 3000 ms = 3 segundos
+
+
+    //  MixItUp (filtros de proyectos) ----
+    // Seleccionamos los botones de filtro y los proyectos
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.work-card');
+
+    // Recorremos cada botón y le damos funcionalidad
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Quitamos la clase 'active' a todos los botones y se la damos al actual
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projects.forEach(proj => {
+          // Si el filtro es 'all' mostramos todo
+          // Si no, verificamos que el proyecto contenga la clase correspondiente
+          if (filter === 'all' || proj.classList.contains(filter.replace('.', ''))) {
+            proj.style.display = 'block';
+          } else {
+            proj.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ---- Lista de artículos dinámica ----
+    const articulos = [
+    {
+      titulo: "¿Qué es la Ingeniería Ambiental?",
+      contenido: "La Ingeniería Ambiental es una disciplina que combina conocimientos de ciencias naturales, ingeniería y gestión para enfrentar los problemas relacionados con la contaminación, el uso sostenible de los recursos y la prevención de impactos negativos en los ecosistemas. Desde la teoría, se fundamenta en principios como la química ambiental, la biología, la hidrología y la ingeniería de procesos, con el objetivo de proteger tanto a los seres humanos como a la naturaleza. Su importancia radica en que permite encontrar soluciones técnicas y viables a problemas tan cotidianos como la calidad del aire, el agua, los suelos y la gestión de residuos. En mi vida personal como estudiante, entender esta definición fue un reto. Al inicio de la carrera me preguntaba: ¿cómo encaja la ingeniería en el cuidado del ambiente? Poco a poco, con clases de profesores que mezclaban teoría y casos prácticos, comprendí que no se trata solo de “amar la naturaleza”, sino de diseñar y aplicar soluciones reales, como sistemas de tratamiento de agua, protocolos de seguridad en obras o planes de gestión de residuos sólidos. Recuerdo mis primeros trabajos de campo, cuando aprendimos a medir parámetros básicos del agua y a identificar contaminantes. En ese momento sentí que estaba aplicando lo aprendido en los libros a situaciones tangibles. Lo más valioso ha sido darme cuenta de que la Ingeniería Ambiental es una carrera profundamente humana, pues su fin último es garantizar calidad de vida y un futuro sostenible. Cuando comparto esto con mi familia o amistades, me gusta explicar que no solo estudio “medio ambiente”, sino que me preparo para ser un puente entre la ciencia y la sociedad, aportando soluciones prácticas a problemas que nos afectan a todos."
+    },
+    {
+      titulo: "Impacto de los Microplásticos",
+      contenido: "Los microplásticos son fragmentos de plástico de menos de cinco milímetros que resultan de la degradación de envases, bolsas, fibras textiles y otros productos. Desde el punto de vista teórico, se estudian por su persistencia en los ecosistemas, su capacidad de acumular toxinas y su entrada a las cadenas alimenticias, afectando tanto a animales como a seres humanos. Se encuentran en ríos, mares, suelos e incluso en el aire que respiramos. La preocupación científica es que son casi imposibles de eliminar y tienen efectos aún no completamente conocidos en la salud. Como estudiante, este tema me marcó porque lo relacioné directamente con mi vida cotidiana. Un día, en un laboratorio, analizamos muestras de agua y descubrimos pequeñas fibras plásticas que, a simple vista, no se percibían. Fue impactante darme cuenta de que esas mismas fibras probablemente estaban en el agua que bebemos. También recuerdo discusiones en clase sobre cómo nuestro consumo diario de botellas, envolturas y ropa sintética contribuye a este problema. En mi entorno personal, comencé a ser más consciente: reduje el uso de botellas plásticas, opté por bolsas reutilizables y hasta reflexioné sobre mi ropa, ya que el lavado de fibras sintéticas libera microplásticos. Me di cuenta de que lo aprendido en la universidad no se queda en los exámenes, sino que influye en cada decisión de consumo que tomo. Esa conexión entre teoría y vida personal es lo que más me motiva a seguir estudiando, porque siento que puedo hacer pequeños cambios con un gran impacto."
+    },
+    {
+      titulo: "Toxicología de Suelos",
+      contenido: "La toxicología de suelos se centra en analizar la presencia de contaminantes como metales pesados, hidrocarburos o pesticidas, y su efecto sobre la salud humana, la agricultura y los ecosistemas. Desde la teoría, se utilizan pruebas de laboratorio, modelos matemáticos y estudios de campo para identificar riesgos, evaluar bioacumulación y proponer medidas de remediación. Es un tema esencial porque los suelos sostienen la producción de alimentos y la biodiversidad, y su contaminación puede tardar siglos en recuperarse. Durante mis estudios, este tema me generó una mezcla de curiosidad y preocupación. Recuerdo un curso donde analizamos casos de suelos contaminados en pasivos ambientales mineros, y cómo la mala gestión llevó a comunidades enteras a convivir con metales tóxicos. En una simulación que hicimos con mis compañeros, calculamos la cantidad de plomo en un área de la sierra del Perú, y al ver los datos, comprendí la magnitud de este problema. En mi vida personal, esta experiencia me hizo reflexionar sobre la tierra en la que se siembran los alimentos que consumo. Entendí que no basta con decir que algo “es natural” si el suelo que lo produce está contaminado. Ahora valoro más los estudios de impacto ambiental y las políticas de monitoreo. Esta parte de la carrera me hizo consciente de la relación directa entre ciencia, salud y vida diaria."
+    },
+    {
+      titulo: "Geografía Ambiental",
+      contenido: "La geografía ambiental estudia cómo interactúan el medio físico (clima, relieve, suelos, agua) con las actividades humanas, analizando los impactos que generamos y proponiendo formas de ordenamiento territorial. Teóricamente, combina cartografía, estudios de paisaje, ecología y ciencias sociales, siendo clave para planificar ciudades sostenibles y proteger áreas vulnerables. Como estudiante, recuerdo lo mucho que me costó al inicio entender mapas complejos y capas de información. Pero cuando empecé a relacionar esos mapas con mis propios recorridos en campo, todo cobró sentido. Por ejemplo, en Beasain, donde ahora vivo, he podido observar cómo las montañas, los ríos y la distribución urbana condicionan la vida diaria de las personas. En mi vida personal, la geografía ambiental me enseñó a mirar mi entorno con otros ojos. Ya no veo una carretera como un simple camino, sino como una intervención que altera ecosistemas, cambia el flujo de agua y afecta comunidades. Esta mirada me ayuda a tomar conciencia de cómo el territorio se planifica y cómo debería hacerse con un enfoque más justo y sostenible."
+    },
+    {
+      titulo: "Matemáticas para la Vida",
+      contenido: "Las matemáticas en ciencias ambientales son herramientas fundamentales para modelar procesos, calcular riesgos, interpretar datos de campo y diseñar soluciones. A través de ecuaciones, estadísticas y modelos, los ingenieros pueden comprender fenómenos complejos como la dispersión de contaminantes, el caudal de un río o la proyección de emisiones. En mi carrera, al inicio sentía que las matemáticas eran una barrera. Pero con el tiempo, comprendí que eran la base para poder trabajar de manera seria. Recuerdo un proyecto en el que teníamos que calcular la tasa de degradación de residuos en diferentes condiciones. Gracias a las fórmulas, pudimos predecir tiempos aproximados y proponer alternativas de manejo. En lo personal, las matemáticas me ayudaron a organizarme incluso fuera de la universidad. Aprendí a aplicar conceptos como proporciones o probabilidades en situaciones simples, desde calcular gastos de viaje hasta analizar datos de mi vida cotidiana. Esta materia me enseñó a ver el mundo de manera más lógica y fundamentada."
+    },
+    {
+      titulo: "Ciencias Ambientales en tiempos de COVID-19",
+      contenido: "La pandemia puso en evidencia la relación estrecha entre salud y ambiente. Teóricamente, se analizó cómo la calidad del aire influyó en la propagación del virus, cómo aumentó la generación de residuos hospitalarios y cómo la reducción de movilidad humana dio un respiro temporal a los ecosistemas. Como estudiante, viví esta etapa de manera intensa. Mis clases se trasladaron al formato virtual, y fue ahí cuando aprendí que la investigación ambiental podía continuar incluso a distancia. Analizamos cómo el confinamiento redujo los niveles de dióxido de nitrógeno en ciudades, y fue impresionante ver los gráficos de mejora temporal. En mi vida personal, el COVID-19 me enseñó la importancia de los hábitos de higiene, pero también la necesidad de gestionar adecuadamente los residuos sanitarios, como mascarillas y guantes. Este tema me hizo valorar más la profesión, pues entendí que la salud pública y el ambiente están profundamente conectados."
+    },
+    {
+      titulo: "Herramientas de Investigación",
+      contenido: "Las herramientas de investigación en ciencias ambientales incluyen encuestas, análisis de laboratorio, modelación computacional y observación de campo. Son esenciales para generar datos fiables y construir conclusiones sólidas. En la universidad, aprendí a manejar cuestionarios, a usar programas estadísticos y a procesar información de campo. Una experiencia memorable fue recolectar muestras de agua y luego analizarlas con parámetros físico-químicos. Ese momento me hizo sentir que realmente estaba produciendo conocimiento útil. En mi vida personal, aprendí que investigar no solo es algo académico, sino un hábito cotidiano. Ahora suelo cuestionarme más, observar detalles, buscar evidencias antes de dar por hecho algo. Ese espíritu investigador, que se entrena en la carrera, lo aplico en la vida diaria para tomar decisiones más conscientes."
+    },
+    {
+      titulo: "Ordenamiento Territorial",
+      contenido: "El ordenamiento territorial busca organizar el espacio geográfico para equilibrar desarrollo económico, protección ambiental y bienestar social. Se basa en leyes, políticas y planes que regulan cómo se usan los recursos y el suelo. Durante mis clases, este tema me abrió los ojos sobre la importancia de planificar con justicia social. Analizamos cómo una carretera mal diseñada puede afectar comunidades enteras o cómo una ciudad mal planificada genera contaminación y desigualdad.En lo personal, me hizo reflexionar sobre mi propio entorno. Al caminar por Beasain, noto cómo se organizan los barrios, las zonas verdes y los servicios básicos. Ahora entiendo que nada de eso es casualidad: detrás hay planificación (a veces buena, a veces deficiente). Esto me motiva a querer participar en proyectos donde se pueda mejorar esa organización de forma sostenible."
+    },
+    {
+      titulo: "Sistemas de Información Geográfica (SIG)",
+      contenido: "Los SIG son herramientas tecnológicas que permiten analizar datos espaciales mediante mapas digitales. Teóricamente, se aplican en gestión de recursos naturales, monitoreo de riesgos, planificación urbana y conservación ambiental. En mi formación, aprender SIG fue todo un desafío. Al inicio me parecían programas complejos, pero poco a poco entendí su utilidad. Recuerdo un trabajo donde usamos SIG para mapear áreas con mayor riesgo de deslizamientos, y al ver el resultado, comprendí lo valioso de estas herramientas.En mi vida personal, los SIG me enseñaron a mirar los mapas más allá de lo turístico. Ahora, cuando uso Google Maps o aplicaciones similares, pienso en la cantidad de información ambiental y social que puede estar detrás. Siento que estoy desarrollando una habilidad tecnológica clave para mi futuro profesional."
+    },
+    {
+      titulo: "Estadística aplicada a la investigación ambiental",
+      contenido: "La estadística es esencial para interpretar datos ambientales, identificar patrones de contaminación y respaldar decisiones de gestión sostenible. Permite dar rigor científico a los estudios y comunicar resultados de manera clara. Como estudiante, este tema me generó respeto y esfuerzo. Tuve que aprender a manejar programas, gráficos y fórmulas que al inicio me parecían muy complicados. Pero con práctica, descubrí que la estadística no es un obstáculo, sino una aliada. En lo personal, este aprendizaje me dio confianza. Ahora siento que puedo analizar datos de mi entorno, ya sea para un proyecto académico o para decisiones más simples, como comparar costos o interpretar encuestas. La estadística me enseñó a confiar en los números como base para tomar decisiones más objetivas y responsables."
+    }
+    ];
+
+    const lista = document.getElementById("lista-articulos");
+    const titulo = document.getElementById("titulo-articulo");
+    const contenido = document.getElementById("contenido-articulo");
+
+    lista.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        const index = e.target.getAttribute("data-index");
+        titulo.textContent = articulos[index].titulo;
+        contenido.textContent = articulos[index].contenido;
+      }
+    });
+
+    // ---- Portfolio popup: abrir detalles de tarjeta ----
+    document.addEventListener('click',(e)=>{
+      if(e.target.closest('.work-button')){
+        const card = e.target.closest('.work-card');
+        const details = card.querySelector('.portfolio-item-details').innerHTML;
+        const imgSrc = card.querySelector('img').src;
+        document.getElementById('pp-content').innerHTML = `\n          <img src="${imgSrc}" alt="">\n          <div style="padding:12px">${details}</div>`;
+        document.getElementById('portfolio-popup').classList.add('open');
+      }
+    });
+    document.getElementById('pp-close').addEventListener('click', ()=>document.getElementById('portfolio-popup').classList.remove('open'));
+
+    
+
+    // ---- Inputs animation helper (if you add forms later) ----
+    document.querySelectorAll('.input').forEach(inp=>{
+      inp.addEventListener('focus',function(){this.parentNode.classList.add('focus')});
+      inp.addEventListener('blur',function(){if(!this.value) this.parentNode.classList.remove('focus')});
+    });
+
+    // ---- Contador de visitas simple (localStorage) ----
+    (function(){
+      const key = 'visitas_bitacora_jimena';
+      let visitas = parseInt(localStorage.getItem(key) || '0',10);
+      visitas++;
+      localStorage.setItem(key, visitas);
+      document.getElementById('contador-visitas').textContent = `Visitas (local): ${visitas}`;
+    })();
+
+    // ---- Pequeña animación al cargar articulo dinamico (si hay contenido) ----
+    window.addEventListener('load', ()=>{
+      const art = document.getElementById('articulo-dinamico');
+      setTimeout(()=>{ if(art && art.textContent.trim().length>0) art.classList.add('visible') }, 300);
+    });
+
+    // ---- Mejora accesible: scroll to sections from nav ----
+    document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+
+  </script>
+</body>
+</html>
