@@ -436,113 +436,96 @@
 
 
 
-    /* ===============================
-      Footer y Extras
-    =============================== */
     footer {
-    background: linear-gradient(135deg, var(--verde-agua), var(--marron-tierra));
-    color: #fff;
-    padding: 3rem 1rem 1rem;
-    font-family: var(--firma);
+    background: linear-gradient(135deg, #8d6e63, #88c9bf);
+    padding: 2rem 1rem;
+    margin-top: 2rem;
     }
 
     .footer-container {
-      max-width: var(--maxW);
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
+      align-items: flex-start;
     }
 
-    .footer-socials, .footer-form {
-      flex: 1;
-      min-width: 280px;
+    .footer-info h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #333;
     }
 
-    .footer-socials h3,
-    .footer-form h3 {
-      margin-bottom: 1rem;
-      font-size: 1.25rem;
-    }
-
-    .social-icons a {
-      display: inline-block;
-      margin-right: 0.8rem;
-      transition: transform 0.3s ease;
+    .footer-info p {
+      margin: 0.5rem 0 1rem;
+      color: #555;
     }
 
     .social-icons a img {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      margin-right: 10px;
+      transition: transform 0.3s;
     }
-
-    .social-icons a:hover {
+    .social-icons a img:hover {
       transform: scale(1.2);
     }
 
-    .footer-form p {
-      font-size: 0.9rem;
+    .footer-form h4 {
       margin-bottom: 1rem;
-      line-height: 1.4;
+      color: #333;
     }
 
     .footer-form form {
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.8rem;
     }
 
     .footer-form input,
     .footer-form textarea {
-      padding: 0.6rem 1rem;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      border: none;
+      font-family: inherit;
       font-size: 0.95rem;
+      transition: border 0.3s;
     }
-
-    .footer-form textarea {
-      min-height: 80px;
-      resize: vertical;
+    .footer-form input:focus,
+    .footer-form textarea:focus {
+      border-color: #66bb6a;
+      outline: none;
     }
 
     .footer-form button {
-      background: #1e4114;
-      color: #fff;
+      background: #a5bd3a;
+      color: rgb(12, 10, 10);
+      padding: 0.8rem;
       border: none;
-      padding: 0.7rem 1.2rem;
       border-radius: 8px;
-      cursor: pointer;
       font-weight: 600;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
     }
-
     .footer-form button:hover {
-      background: #e8f34a;
+      background: #57a05c;
       transform: scale(1.05);
-      color: #24323a;
     }
 
-    .footer-copy {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      opacity: 0.9;
-    }
-
-    /* Responsive */
-    @media(max-width:768px){
-      .footer-container{
-        flex-direction: column;
-        align-items: center;
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
-      .social-icons{
-        margin-bottom: 1.5rem;
+      .social-icons {
+        justify-content: center;
+      }
+      .footer-form form {
+        width: 100%;
       }
     }
-
-
-    /* ===============================
+        /* ===============================
       Responsive
     =============================== */
     @media (max-width: 800px) {
@@ -761,62 +744,39 @@
 
 
   </section>
-
-
+      <hr style="margin: 40px;">
+      <!-- Formulario de contacto -->
+  <div class="footer-container">
+    <div class="footer-info">
+      <h3>🌿 Jimena Flores</h3>
+      <p>Comparte tus proyectos conmigo y publiquemos juntos.</p>
+      <div class="social-icons">
+        <!-- Usa tus SVGs descargados -->
+          <h3>Sígueme</h3>
+          <br style="margin: 20px;">
+        <a href="https://www.linkedin.com/in/tu-linkedin" target="_blank">
+        <img src="svg/Linkedin.svg" alt="LinkedIn"></a>
+        <a href="#####" target="_blank">
+        <img src="svg/youtube - copia.svg" alt="Youtube"> </a>
+        <a href="https://www.instagram.com/tu-instagram" target="_blank">
+        <img src="svg/instagram - copia.svg" alt="Instagram"></a>
+      </div>
+    </div>
+    <div class="footer-form">
+      <h4>📩 Cuéntame tu proyecto</h4>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu email" required>
+        <textarea name="message" rows="4" placeholder="Cuéntame tu idea..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
   </main>
 
 <footer>
   <div class="footer-container">
-
-    <!-- Sección Redes Sociales -->
-    <div class="footer-socials">
-      <h3>Sígueme</h3>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/tu-linkedin" target="_blank">
-          <img src="svg/Linkedin.svg" alt="LinkedIn">
-          
-        </a>
-        <a href="#####" target="_blank">
-          <img src="svg/youtube - copia.svg" alt="Youtube">
-        </a>
-        <a href="https://www.instagram.com/tu-instagram" target="_blank">
-          <img src="svg/instagram - copia.svg" alt="Instagram">
-        </a>
-        <a href="https://twitter.com/tu-twitter" target="_blank">
-          <img src="img/twitter.svg" alt="Twitter">
-        </a>
-      </div>
-    </div>
-
-    <!-- Sección Publica tu Proyecto -->
-    <div class="footer-form">
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias">
-            <!-- necesario para que Netlify reconozca el form -->
-            <input type="hidden" name="form-name" value="contact">
-
-            <!-- honeypot anti-spam -->
-            <p class="hidden" style="display:none">
-              <label>Si eres humano, deja esto vacío: <input name="bot-field"></label>
-            </p>
-
-            <label>Nombre
-              <input type="text" name="name" required>
-            </label>
-
-            <label>Email
-              <input type="email" name="email" required>
-            </label>
-
-            <label>Mensaje
-              <textarea name="message" required></textarea>
-            </label>
-
-            <button type="submit">Enviar</button>
-        </form>
-
-    </div>
-
-  </div>
+  
   <p class="footer-copy">© 2025 Jimena Flores. Todos los derechos reservados.</p>
 </footer>
 
@@ -1028,25 +988,20 @@
       if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
     }));
 
-      const handleSubmit = event => {
-    event.preventDefault();
-    const myForm = event.target;
-    const formData = new FormData(myForm);
+    // Inicializar con tu User ID
+    emailjs.init("23_malEP4HCSrZCVS");
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
-    })
-      .then(() => {
-        // mostrar mensaje de éxito o redirigir
-        window.location.href = '/gracias';
-      })
-      .catch(err => alert(err));
-  };
+    // Manejar el formulario
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  document.querySelector("form[name='contact']").addEventListener("submit", handleSubmit);
-
+      emailjs.sendForm("service_45lo6zg", "template_h901arq", this)
+        .then(() => {
+          alert("✅ Mensaje enviado con éxito!");
+        }, (err) => {
+          alert("❌ Error: " + JSON.stringify(err));
+        });
+    });
 
   </script>
 </body>
