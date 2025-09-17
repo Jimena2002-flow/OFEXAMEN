@@ -7,9 +7,7 @@
   <meta name="author" content="Jimena Flores" />
   <link rel="icon" href="favicon.ico" />
   <style>
-    /* ===============================
-   Variables y Configuración Global
-    =============================== */
+   
     :root {
       --verde-agua: #88c9bf;
       --marron-tierra: #8d6e63;
@@ -36,9 +34,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ===============================
-      Header
-    =============================== */
     header {
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
       color: #fff;
@@ -58,9 +53,7 @@
     header h1 { margin: 0; font-size: 1.6rem; }
     header p { margin: 0.25rem 0 0; font-size: 0.95rem; opacity: 0.95; }
 
-    /* ===============================
-      Navbar
-    =============================== */
+    
     .navbar {
       position: sticky;
       top: 0;
@@ -97,9 +90,7 @@
     nav a:hover { background: #f1f1f1; }
     .menu-toggle { display: none; font-size: 1.4rem; cursor: pointer; }
 
-    /* ===============================
-      Main
-    =============================== */
+    
     main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
 
     /* ===============================
@@ -449,32 +440,107 @@
       Footer y Extras
     =============================== */
     footer {
-      background: var(--accent-2);
-      color: #fff;
-      padding: 1.2rem;
-      margin-top: 2rem;
+    background: linear-gradient(135deg, var(--verde-agua), var(--marron-tierra));
+    color: #fff;
+    padding: 3rem 1rem 1rem;
+    font-family: var(--firma);
     }
-    footer .flex { display: flex; gap: 1rem; align-items: center; justify-content: center; }
-    .input-container { position: relative; margin-top: 1rem; }
-    .input {
-      width: 100%;
-      padding: .6rem 1rem;
+
+    .footer-container {
+      max-width: var(--maxW);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-socials, .footer-form {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .footer-socials h3,
+    .footer-form h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .footer-form p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .footer-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-form input,
+    .footer-form textarea {
+      padding: 0.6rem 1rem;
       border-radius: 8px;
-      border: 1px solid #dcdcdc;
+      border: none;
+      font-size: 0.95rem;
     }
-    .input:focus { outline: none; border-color: var(--accent); }
-    .input-container label {
-      position: absolute;
-      left: 12px; top: 10px;
-      transition: all .18s;
-      font-size: .95rem;
-      color: #777;
+
+    .footer-form textarea {
+      min-height: 80px;
+      resize: vertical;
     }
-    .input-container.focus label {
-      top: -10px;
-      font-size: .78rem;
-      color: var(--accent);
+
+    .footer-form button {
+      background: #1e4114;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
+
+    .footer-form button:hover {
+      background: #e8f34a;
+      transform: scale(1.05);
+      color: #24323a;
+    }
+
+    .footer-copy {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .footer-container{
+        flex-direction: column;
+        align-items: center;
+      }
+      .social-icons{
+        margin-bottom: 1.5rem;
+      }
+    }
+
 
     /* ===============================
       Responsive
@@ -707,13 +773,14 @@
       <h3>Sígueme</h3>
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/tu-linkedin" target="_blank">
-          <img src="img/linkedin.svg" alt="LinkedIn">
+          <img src="svg/Linkedin.svg" alt="LinkedIn">
+          
         </a>
-        <a href="https://github.com/tu-github" target="_blank">
-          <img src="img/github.svg" alt="GitHub">
+        <a href="#####" target="_blank">
+          <img src="svg/youtube - copia.svg" alt="Youtube">
         </a>
         <a href="https://www.instagram.com/tu-instagram" target="_blank">
-          <img src="img/instagram.svg" alt="Instagram">
+          <img src="svg/instagram - copia.svg" alt="Instagram">
         </a>
         <a href="https://twitter.com/tu-twitter" target="_blank">
           <img src="img/twitter.svg" alt="Twitter">
@@ -723,14 +790,30 @@
 
     <!-- Sección Publica tu Proyecto -->
     <div class="footer-form">
-      <h3>Comparte tu proyecto</h3>
-      <p>¿Eres estudiante o egresado y quieres publicar tu proyecto o artículo? ¡Cuéntame!</p>
-      <form id="contactForm">
-        <input type="text" id="name" placeholder="Tu nombre" required>
-        <input type="email" id="email" placeholder="Tu correo" required>
-        <textarea id="message" placeholder="Cuéntame sobre tu proyecto" required></textarea>
-        <button type="submit">Contarme</button>
-      </form>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias">
+            <!-- necesario para que Netlify reconozca el form -->
+            <input type="hidden" name="form-name" value="contact">
+
+            <!-- honeypot anti-spam -->
+            <p class="hidden" style="display:none">
+              <label>Si eres humano, deja esto vacío: <input name="bot-field"></label>
+            </p>
+
+            <label>Nombre
+              <input type="text" name="name" required>
+            </label>
+
+            <label>Email
+              <input type="email" name="email" required>
+            </label>
+
+            <label>Mensaje
+              <textarea name="message" required></textarea>
+            </label>
+
+            <button type="submit">Enviar</button>
+        </form>
+
     </div>
 
   </div>
@@ -792,35 +875,35 @@
     // ---- Proyectos y filtrados----
         // Función para generar tarjetas desde JSON
         function generarProyectos() {
-            return fetch('proyectos.json')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('work-container');
+          return fetch('proyectos.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('work-container');
 
-                    data.forEach(proyecto => {
-                        const card = document.createElement('div');
-                        card.className = `work-card ${proyecto.categoria}`;
-                        card.innerHTML = `
-                            <img src="${proyecto.imagen}" alt="${proyecto.titulo}">
-                            <div class="meta">
-                                <h3>${proyecto.titulo}</h3>
-                                <p>${proyecto.descripcion}</p>
-                                <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-                                <div class="portfolio-item-details" style="display:none">
-                                    <h3 class="details-title">${proyecto.detalles.titulo}</h3>
-                                    <p class="details-description">${proyecto.detalles.descripcion}</p>
-                                    ${proyecto.detalles.imagen ? `<img src="${proyecto.detalles.imagen}" style="width:100%;margin-top:8px;border-radius:6px">` : ''}
-                                    <ul class="details-info">
-                                        ${proyecto.detalles.info.map(i => `<li>${i.etiqueta} - <span>${i.valor}</span></li>`).join('')}
-                                    </ul>
-                                </div>
+                data.forEach(proyecto => {
+                    const card = document.createElement('div');
+                    card.className = `work-card ${proyecto.categoria}`;
+                    card.innerHTML = `
+                        <img src="${proyecto.imagen}" alt="${proyecto.titulo}">
+                        <div class="meta">
+                            <h3>${proyecto.titulo}</h3>
+                            <p>${proyecto.descripcion}</p>
+                            <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+                            <div class="portfolio-item-details" style="display:none">
+                                <h3 class="details-title">${proyecto.detalles.titulo}</h3>
+                                <p class="details-description">${proyecto.detalles.descripcion}</p>
+                                ${proyecto.detalles.imagen ? `<img src="${proyecto.detalles.imagen}" style="width:100%;margin-top:8px;border-radius:6px">` : ''}
+                                <ul class="details-info">
+                                    ${proyecto.detalles.info.map(i => `<li>${i.etiqueta} - <span>${i.valor}</span></li>`).join('')}
+                                </ul>
                             </div>
-                        `;
-                        container.appendChild(card);
-                    });
-
-                    return container.querySelectorAll('.work-card');
+                        </div>
+                    `;
+                    container.appendChild(card);
                 });
+
+                return container.querySelectorAll('.work-card');
+            });
         }
 
         // Función para inicializar filtros
@@ -944,6 +1027,26 @@
       const target = document.querySelector(a.getAttribute('href'));
       if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
     }));
+
+      const handleSubmit = event => {
+    event.preventDefault();
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    })
+      .then(() => {
+        // mostrar mensaje de éxito o redirigir
+        window.location.href = '/gracias';
+      })
+      .catch(err => alert(err));
+  };
+
+  document.querySelector("form[name='contact']").addEventListener("submit", handleSubmit);
+
 
   </script>
 </body>
