@@ -1,0 +1,133 @@
+[
+  {
+    "categoria": "seguridad",
+    "imagen": "img/Inicios en Seguridad 2023.jpg",
+    "titulo": "Charla inicial de Seguridad",
+    "descripcion": "Participación en sesiones de inducción y charlas diarias sobre prevención de riesgos laborales como Asistente SSOMA.",
+    "detalles": {
+      "titulo": "Charlas de seguridad",
+      "descripcion": "Se promovió la cultura de seguridad en la empresa mediante capacitaciones y recordatorios diarios sobre procedimientos de trabajo seguro.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Febrero 2022"},
+        {"etiqueta": "Rol", "valor": "Asistente SSOMA"},
+        {"etiqueta": "Herramientas", "valor": "Protocolos de seguridad | Checklist de riesgos"}
+      ]
+    }
+  },
+  {
+    "categoria": "experiencias",
+    "imagen": "img/decidimos montar en cmaioneta piura.jpg",
+    "titulo": "Viaje lejos de casa",
+    "descripcion": "Aventura de más de 8 horas sobre 4 ruedas para realizar trabajo de campo con amigos universitarios en Huancabamba.",
+    "detalles": {
+      "titulo": "Trabajo de campo en Huancabamba",
+      "descripcion": "Participación en levantamiento de datos, observación de comunidades locales y experiencia práctica en logística de viajes de trabajo.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Mayo 2024"},
+        {"etiqueta": "Rol", "valor": "Coordinación"},
+        {"etiqueta": "Herramientas", "valor": "Organización de grupos | Registro de información"}
+      ],
+      "imagen": "img/atarceder piura.jpg"
+    }
+  },
+  {
+    "categoria": "voluntariado",
+    "imagen": "img/Voluntariado 2017 - Distinto.jpg",
+    "titulo": "Mi primer Voluntariado DISTINTO",
+    "descripcion": "Diseño e implementación de huerto urbano comunitario, promoviendo prácticas sostenibles y participación vecinal.",
+    "detalles": {
+      "titulo": "Huerto urbano y compostaje",
+      "descripcion": "Coordinación con vecinos, implementación de técnicas orgánicas y sensibilización ambiental sobre reciclaje y compostaje.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Mayo 2024"},
+        {"etiqueta": "Rol", "valor": "Coordinación"},
+        {"etiqueta": "Herramientas", "valor": "Técnicas de compostaje | Educación ambiental"}
+      ],
+      "imagen": "img/mesa de trabajo distinto 2017.jpg"
+    }
+  },
+  {
+    "categoria": "seguridad",
+    "imagen": "img/charla de seguridad 2023.jpg",
+    "titulo": "Reunión de Seguridad",
+    "descripcion": "Sesiones periódicas para reforzar medidas de prevención de riesgos y seguridad laboral en proyectos de construcción.",
+    "detalles": {
+      "titulo": "Capacitación y seguimiento",
+      "descripcion": "Supervisión de procedimientos, implementación de checklist y evaluación de cumplimiento de normas de seguridad.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Febrero 2022"},
+        {"etiqueta": "Rol", "valor": "Asistente SSOMA"}
+      ]
+    }
+  },
+  {
+    "categoria": "experiencias",
+    "imagen": "img/ucss- brigada residencia universitaria.jpg",
+    "titulo": "Voluntariado universitario",
+    "descripcion": "Participación en brigadas de voluntariado universitario, fomentando trabajo colaborativo y liderazgo en proyectos comunitarios.",
+    "detalles": {
+      "titulo": "Brigada universitaria",
+      "descripcion": "Coordinación de actividades de voluntariado, planificación de eventos y promoción de valores de responsabilidad social.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Mayo 2024"},
+        {"etiqueta": "Rol", "valor": "Coordinación"}
+      ]
+    }
+  },
+  {
+    "categoria": "voluntariado",
+    "imagen": "img/campañas voluntariado navideños 2019.jpg",
+    "titulo": "Navidad con Niños",
+    "descripcion": "Charlas educativas sobre reciclaje y gestión del agua para niños, combinando educación ambiental y actividades lúdicas.",
+    "detalles": {
+      "titulo": "Sensibilización ambiental",
+      "descripcion": "Diseño de materiales didácticos y talleres prácticos para incentivar hábitos sostenibles en la infancia.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Julio 2023"},
+        {"etiqueta": "Rol", "valor": "Coordinación educativa"}
+      ]
+    }
+  },
+  {
+    "categoria": "experiencias",
+    "imagen": "img/ucss - lima comunion y liberacion.jpg",
+    "titulo": "Espacio de Liberación Universitaria",
+    "descripcion": "Participación en un grupo universitario que promueve el autoconocimiento, valores personales y desarrollo comunitario.",
+    "detalles": {
+      "titulo": "Crecimiento personal y liderazgo",
+      "descripcion": "Reflexión sobre metas individuales, liderazgo grupal y la construcción de relaciones significativas en entornos educativos.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Octubre 2019"},
+        {"etiqueta": "Rol", "valor": "Experiencias"}
+      ]
+    }
+  },
+  {
+    "categoria": "voluntariado",
+    "imagen": "img/RlOMAS- VOLUNTARIADOS LOMAS DE CARAVAILLO.jpg",
+    "titulo": "Limpieza en Lomas",
+    "descripcion": "Participación en campañas de limpieza y sensibilización ambiental en áreas naturales protegidas privadas.",
+    "detalles": {
+      "titulo": "Sensibilización y limpieza",
+      "descripcion": "Coordinación de voluntarios, planificación de actividades de limpieza y educación ambiental a visitantes locales.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Julio 2023"},
+        {"etiqueta": "Rol", "valor": "Coordinación voluntariado"}
+      ]
+    }
+  },
+  {
+    "categoria": "voluntariado",
+    "imagen": "img/RNL - Equivo voluntario.jpg",
+    "titulo": "Paso por Lomas de Lachay",
+    "descripcion": "Experiencia de voluntariado en reserva natural, aprendiendo sobre flora y fauna local y educación ambiental.",
+    "detalles": {
+      "titulo": "Educación ambiental en campo",
+      "descripcion": "Documentación de especies, participación en conservación y sensibilización de visitantes sobre biodiversidad.",
+      "info": [
+        {"etiqueta": "Creado", "valor": "Julio 2023"},
+        {"etiqueta": "Rol", "valor": "Voluntariado"}
+      ]
+    }
+  }
+]

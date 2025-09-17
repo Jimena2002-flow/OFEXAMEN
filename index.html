@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jimena Flores - Portafolio Ambiental</title>
   <meta name="author" content="Jimena Flores" />
-  <link rel="icon" href="favicon_blog.ico" />
+  <link rel="icon" href="favicon.ico" />
   <style>
     /* ===============================
    Variables y Configuración Global
@@ -541,263 +541,101 @@
 
   <main>
 
-    <!-- Carrusel (Swiper) -->
-  <div class="carousel">
-    <img src="img/paisaje huasta campamento.jpg" class="active" alt="Imagen 1">
-    <img src="img/huasta apuntando.jpg" alt="Imagen 2">
-    <img src="img/charla de seguridad 2023.jpg" alt="Imagen 3">
+        <!-- Carrusel (Swiper) -->
+    <div class="carousel">
+        <img src="img/paisaje huasta campamento.jpg" class="active" alt="Imagen 1">
+        <img src="img/huasta apuntando.jpg" alt="Imagen 2">
+        <img src="img/charla de seguridad 2023.jpg" alt="Imagen 3">
 
-    <button class="prev">⟨</button>
-    <button class="next">⟩</button>
-  </div>
+        <button class="prev">⟨</button>
+        <button class="next">⟩</button>
+    </div>
 
 
     
-  <!-- Contenido principal: barra lateral + articulo dinamico -->
-  <div class="contenido-blog">
-    <aside class="barra-lateral">
-      <h3>Mis Destacados</h3>
-      <ul id="lista-articulos">
-        <li data-index="0">🌱 ¿Qué es la Ingeniería Ambiental?</li>
-        <li data-index="1">🌊 Impacto de los Microplásticos</li>
-        <li data-index="2">🧪 Toxicología de Suelos</li>
-        <li data-index="3">🌍 Geografía Ambiental</li>
-        <li data-index="4">➗ Matemáticas para la Vida</li>
-        <li data-index="5">🦠 Ciencias Ambientales en tiempos de COVID-19</li>
-        <li data-index="6">🔎 Herramientas de Investigación</li>
-        <li data-index="7">🗺️ Ordenamiento Territorial</li>
-        <li data-index="8">📡 Sistemas de Información Geográfica (SIG)</li>
-        <li data-index="9">📊 Estadística aplicada a la investigación ambiental</li>
-      </ul>
-    </aside>
+    <!-- Contenido principal: barra lateral + articulo dinamico -->
+    <div class="contenido-blog">
+        <aside class="barra-lateral">
+        <h3>Mis Destacados</h3>
+        <ul id="lista-articulos">
+            <li data-index="0">🌱 ¿Qué es la Ingeniería Ambiental?</li>
+            <li data-index="1">🌊 Impacto de los Microplásticos</li>
+            <li data-index="2">🧪 Toxicología de Suelos</li>
+            <li data-index="3">🌍 Geografía Ambiental</li>
+            <li data-index="4">➗ Matemáticas para la Vida</li>
+            <li data-index="5">🦠 Ciencias Ambientales en tiempos de COVID-19</li>
+            <li data-index="6">🔎 Herramientas de Investigación</li>
+            <li data-index="7">🗺️ Ordenamiento Territorial</li>
+            <li data-index="8">📡 Sistemas de Información Geográfica (SIG)</li>
+            <li data-index="9">📊 Estadística aplicada a la investigación ambiental</li>
+        </ul>
+        </aside>
 
-    <section class="articulo-dinamico" id="articulo-dinamico">
-      <h2 id="titulo-articulo"> Explora conmigo lo que más aprendi en 10 ciclos de Ciencias Ambientales</h2>
-      <p id="contenido-articulo">Aquí aparecerá el contenido de los temas que esta en el menu de mis destacados </p>
-    </section>
-  </div>
-
-  <!-- Tengo que agregar una section mia-->
-  <section id="SobreMi" class="sobre-mi">
-    <div class="sobre-mi-container">
-      <div class="texto">
-        <h2>¿Quién es Jimena?</h2>
-        <p>
-          Soy una apasionada egresada de Ciencias Ambientales en la Universidad Católica Sedes Sapientiae de Perú.
-          Desde pequeña, he sentido una profunda conexión con la naturaleza y un fuerte deseo de proteger nuestro planeta.
-        </p>
-        <p>
-          A lo largo de mi formación académica, he adquirido conocimientos en gestión ambiental, evaluación de impacto,
-          conservación de recursos naturales y sostenibilidad. He participado en proyectos y prácticas que me han permitido aplicar 
-          estos conocimientos en situaciones reales.
-        </p>
-        <h3><strong>Ingresa a Revisar mi CV Digital</strong></h3>
-        <a href="####" class="btn-cv">Ver CV</a>
-      </div>
-      <div class="imagen">
-        <img src="img/huasta paisaje.jpg" alt="Jimena Flores">
-      </div>
+        <section class="articulo-dinamico" id="articulo-dinamico">
+        <h2 id="titulo-articulo"> Explora conmigo lo que más aprendi en 10 ciclos de Ciencias Ambientales</h2>
+        <p id="contenido-articulo">Aquí aparecerá el contenido de los temas que esta en el menu de mis destacados </p>
+        </section>
     </div>
-  </section>
 
-
-
-
-  <!-- Proyectos / Work -->
-  <section id="proyectos" style="margin-top:1.5rem">
-
-    <hr style="margin:12px 0"/>
-      <h4>Filtros de proyectos</h4>
-      <div class="controls">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter=".seguridad">Seguridad</button>
-        <button class="filter-btn" data-filter=".experiencias">Experiencias</button>
-        <button class="filter-btn" data-filter=".voluntariado">Voluntariado</button>
-      </div>
-    <hr>
-
-    <h2 style="text-align:center">Proyectos y Trabajos</h2>
-
-    <div class="work-container mix-container" id="work-container">
-      <!-- tarjetas: mezcla (mixitup) -->
-      <!-- Temas de Seguridad -->
-      <div class="work-card mix seguridad">
-        <img src="img/Inicios en Seguridad 2023.jpg" alt="Seguridad">
-        <div class="meta">
-          <h3> Charla inicial de Seguridad </h3>
-          <p>La constancia y la charlas diarias en mi primer trabajo de: Asistente SSOMA</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Charlas </h3>
-            <p class="details-description">...</p>
-            <ul class="details-info"><li>Creado - <span>Febrero 2022</span></li><li>Tecnologías - <span>muestreo | GIS</span></li></ul>
-          </div>
-        </div>
-      </div>
-      <!-- Experiencias -->
-      <div class="work-card mix experiencias">
-        <img src="img/decidimos montar en cmaioneta piura.jpg" alt="amistad">
-        <div class="meta">
-          <h3>Viaje lejos de casa </h3>
-          <p>Aventura de mas de 8 horas sobre 4 ruedas y con vistas extraordinarias</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Viaje en Huancabamba en la parte trasera una camioneta con mis amigos de la uni   </h3>
-            <img src="img/atarceder piura.jpg" alt="brigada" style="width:100%;margin-top:8px;border-radius:6px"/>
-            <p class="details-description">Me considero una persona aventurera para viajar mas de 8 hr para llegar a la sierra de huacabamba, pero a que? pues era a un trabajo de la Onpe con mis amigos de la universidad, eramos personas con hambre poner pagar nuestros estudios, entonces en medio de inii</p>
-            
-            <ul class="details-info"><li>Creado - <span>May 2024</span></li><li>Rol - <span>Coordinación</span></li></ul>
-            
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Voluntariados -->
-      <div class="work-card mix voluntariado">
-        <img src="img/Voluntariado 2017 - Distinto.jpg" alt="Huerto">
-        <div class="meta">
-          <h3>Mi primer Voluntariado DISTINTO</h3>
-          <p>Diseño e implementación de huerto comunitario — voluntariado local.</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Huerto urbano</h3>
-            <p class="details-description">Coordinación con vecinos y técnicas orgánicas de compostaje.</p>
-            <img src="img/mesa de trabajo distinto 2017.jpg" alt="Huerto 1" style="width:100%;margin-top:8px;border-radius:6px"/>
-            
-            <ul class="details-info"><li>Creado - <span>May 2024</span></li><li>Rol - <span>Coordinación</span></li></ul>
-            
-          </div>
-        </div>
-      </div>
-      <!-- Temas de Seguridad -->
-      <div class="work-card mix seguridad">
-        <img src="img/charla de seguridad 2023.jpg" alt="Seguridad">
-        <div class="meta">
-          <h3> Reunion de Seguridad </h3>
-          <p>Inportancia de la seguridad </p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">reuniones </h3>
-            <p class="details-description">...</p>
-            <ul class="details-info"><li>Creado - <span>Febrero 2022</span></li><li>SSOMA - <span>Prevencion de riesgos </span></li></ul>
-          </div>
-        </div>
-      </div>
-      
-
-      <div class="work-card mix experiencias">
-        <img src="img/ucss- brigada residencia universitaria.jpg" alt="brigada">
-        <div class="meta">
-          <h3>¿Voluntario o Universitario?</h3>
-          <p>...</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">En mi universidad se formo un grupo de voluntariado - Brigada </h3>
-            <p class="details-description">Coordinación con vecinos y técnicas orgánicas de compostaje.</p>
-            
-            <ul class="details-info"><li>Creado - <span>May 2024</span></li><li>Rol - <span>Coordinación</span></li></ul>
-            
-          </div>
-        </div>
-      </div>
-
-      <div class="work-card mix seguridad">
-        <img src="img/charla de seguridad 2023.jpg" alt="Seguridad">
-        <div class="meta">
-          <h3> Reunion de Seguridad </h3>
-          <p>Inportancia de la seguridad </p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">reuniones </h3>
-            <p class="details-description">...</p>
-            <ul class="details-info"><li>Creado - <span>Febrero 2022</span></li><li>SSOMA - <span>Prevencion de riesgos </span></li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-card mix voluntariado">
-        <img src="img/campañas voluntariado navideños 2019.jpg" alt="Campaña">
-        <div class="meta">
-          <h3>Navidad con Niños</h3>
-          <p>Charlas educativas en centros escolares sobre reciclaje y gestión del agua.</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Sensibilización</h3>
-            <p class="details-description">Diseño de materiales y actividades prácticas para niños.</p>
-            <ul class="details-info"><li>Creado - <span>Jul 2023</span></li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-card mix experiencias">
-        <img src="img/ucss - lima comunion y liberacion.jpg" alt="residencia">
-        <div class="meta">
-          <h3>Espacio de Liberacion universitaria</h3>
-          <p>...</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Nunca espere vivir un momento como este en mi primer año de la universidad </h3>
-            <p class="details-description">Encontre un grupo hermoso en la universidad, 
-            Comunion y Liberacion donde el espacio era poder entrar en nosotros mismo identificar quienes somos y que meta tenemos cada uno.</p>
-            
-            <ul class="details-info"><li>Creado - <span>Octubre  2019</span></li><li>Rol - <span>Experiencias</span></li></ul>
-            
-          </div>
-        </div>
-      </div>
-
-      <div class="work-card mix voluntariado">
-        <img src="img/RlOMAS- VOLUNTARIADOS LOMAS DE CARAVAILLO.jpg" alt="Campaña de Limpieza">
-        <div class="meta">
-          <h3>Limpieza en Lomas</h3>
-          <p>Lomas de Carabayllo, Area natura proeguida privada</p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Sensibilización</h3>
-            <p class="details-description">Diseño de materiales y actividades prácticas para niños.</p>
-            <ul class="details-info"><li>Creado - <span>Jul 2023</span></li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-card mix voluntariado">
-        <img src="img/RNL - Equivo voluntario.jpg" alt="Campaña de Limpieza">
-        <div class="meta">
-          <h3>mi paso por las Lomas de Lachay</h3>
-          <p>Lomas de Lachay ubicada entre Chancay y Huacho, casi tres meses de actividades diversas </p>
-          <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
-          <div class="portfolio-item-details" style="display:none">
-            <h3 class="details-title">Sensibilización</h3>
-            <p class="details-description">Pude aprender muchas especies de flora y fauna al haber pasado por mis estudios vitales, supe aprovechar cada convocatoria 
-              que se presentaba para ser un voluntario guarparque en una de las reservas mas importantes de lima provincias. 
+    <!-- Tengo que agregar una section mia-->
+    <section id="SobreMi" class="sobre-mi">
+        <div class="sobre-mi-container">
+        <div class="texto">
+            <h2>¿Quién es Jimena?</h2>
+            <p>
+            Soy una apasionada egresada de Ciencias Ambientales en la Universidad Católica Sedes Sapientiae de Perú.
+            Desde pequeña, he sentido una profunda conexión con la naturaleza y un fuerte deseo de proteger nuestro planeta.
             </p>
-            <ul class="details-info"><li>Creado - <span>Jul 2023</span></li></ul>
-          </div>
+            <p>
+            A lo largo de mi formación académica, he adquirido conocimientos en gestión ambiental, evaluación de impacto,
+            conservación de recursos naturales y sostenibilidad. He participado en proyectos y prácticas que me han permitido aplicar 
+            estos conocimientos en situaciones reales.
+            </p>
+            <h3><strong>Ingresa a Revisar mi CV Digital</strong></h3>
+            <a href="https://cv-jfgarro.netlify.app/" class="btn-cv">Ver CV</a>
         </div>
-      </div>
-    </div>
+        <div class="imagen">
+            <img src="img/huasta paisaje.jpg" alt="Jimena Flores">
+        </div>
+        </div>
+    </section>
 
-    <!-- Portfolio popup -->
-  
-      <div class="portfolio-popup" id="portfolio-popup">
-        <div class="portfolio-popup-inner">
-          <span class="pp-close" id="pp-close">&times;</span>
-          <div id="pp-content"></div>
+
+
+    <section id="proyectos" style="margin-top:1.5rem">
+
+        <hr style="margin:12px 0"/>
+        <h4>Filtros de proyectos</h4>
+        <div class="controls">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter=".seguridad">Seguridad</button>
+            <button class="filter-btn" data-filter=".experiencias">Experiencias</button>
+            <button class="filter-btn" data-filter=".voluntariado">Voluntariado</button>
         </div>
-      </div>
+        <hr>
+
+        <div class="work-container mix-container" id="work-container">
+        <!-- Las tarjetas se generarán con JS -->
+        </div>
+
+
+        <!-- Portfolio popup -->
     
-    <!-- Services modal skeleton (reused if needed) -->
-      <div class="services-modal" id="services-modal">
-        <div class="services-modal-content">
-          <button id="services-modal-close" style="float:right;background:none;border:none;font-size:1.2rem">✕</button>
-          <h3 id="services-modal-title">Título</h3>
-          <p id="services-modal-body">Contenido</p>
+        <div class="portfolio-popup" id="portfolio-popup">
+            <div class="portfolio-popup-inner">
+            <span class="pp-close" id="pp-close">&times;</span>
+            <div id="pp-content"></div>
+            </div>
         </div>
-      </div>
+        
+        <!-- Services modal skeleton (reused if needed) -->
+        <div class="services-modal" id="services-modal">
+            <div class="services-modal-content">
+            <button id="services-modal-close" style="float:right;background:none;border:none;font-size:1.2rem">✕</button>
+            </div>
+        </div>
 
-
-  </section>
+    </section>
   
   <hr style="margin: 40px;">
 
@@ -861,22 +699,44 @@
 
   </main>
 
-  <footer id="contacto">
-    <div style="max-width:var(--maxW);margin:0 auto;padding:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
-      <div>
-        <strong>Jimena Flores</strong>
-        <div>Estudiante Ingeniería Ambiental · Beasain</div>
-      </div>
+<footer>
+  <div class="footer-container">
 
-      <div class="flex">
-        <div id="contador-visitas" style="font-weight:700"></div>
-        <div>
-          <a href="mailto:jfgarro13@gmail.com" style="color:#fff;text-decoration:underline">jfgarro13@gmail.com</a>
-        </div>
+    <!-- Sección Redes Sociales -->
+    <div class="footer-socials">
+      <h3>Sígueme</h3>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/tu-linkedin" target="_blank">
+          <img src="img/linkedin.svg" alt="LinkedIn">
+        </a>
+        <a href="https://github.com/tu-github" target="_blank">
+          <img src="img/github.svg" alt="GitHub">
+        </a>
+        <a href="https://www.instagram.com/tu-instagram" target="_blank">
+          <img src="img/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://twitter.com/tu-twitter" target="_blank">
+          <img src="img/twitter.svg" alt="Twitter">
+        </a>
       </div>
     </div>
-    <p style="text-align:center;margin:8px 0 0">&copy; 2025 Bitácora Ambiental — Jimena Flores</p>
-  </footer>
+
+    <!-- Sección Publica tu Proyecto -->
+    <div class="footer-form">
+      <h3>Comparte tu proyecto</h3>
+      <p>¿Eres estudiante o egresado y quieres publicar tu proyecto o artículo? ¡Cuéntame!</p>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Tu nombre" required>
+        <input type="email" id="email" placeholder="Tu correo" required>
+        <textarea id="message" placeholder="Cuéntame sobre tu proyecto" required></textarea>
+        <button type="submit">Contarme</button>
+      </form>
+    </div>
+
+  </div>
+  <p class="footer-copy">© 2025 Jimena Flores. Todos los derechos reservados.</p>
+</footer>
+
 
   
   <!-- Scripts: MixItUp, Swiper, and main JS -->
@@ -929,33 +789,73 @@
       showImage(index);
     }, 3000); // 3000 ms = 3 segundos
 
+    // ---- Proyectos y filtrados----
+        // Función para generar tarjetas desde JSON
+        function generarProyectos() {
+            return fetch('proyectos.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('work-container');
 
-    //  MixItUp (filtros de proyectos) ----
-    // Seleccionamos los botones de filtro y los proyectos
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.work-card');
+                    data.forEach(proyecto => {
+                        const card = document.createElement('div');
+                        card.className = `work-card ${proyecto.categoria}`;
+                        card.innerHTML = `
+                            <img src="${proyecto.imagen}" alt="${proyecto.titulo}">
+                            <div class="meta">
+                                <h3>${proyecto.titulo}</h3>
+                                <p>${proyecto.descripcion}</p>
+                                <span class="work-button">Detalles <i class="uil uil-arrow-right"></i></span>
+                                <div class="portfolio-item-details" style="display:none">
+                                    <h3 class="details-title">${proyecto.detalles.titulo}</h3>
+                                    <p class="details-description">${proyecto.detalles.descripcion}</p>
+                                    ${proyecto.detalles.imagen ? `<img src="${proyecto.detalles.imagen}" style="width:100%;margin-top:8px;border-radius:6px">` : ''}
+                                    <ul class="details-info">
+                                        ${proyecto.detalles.info.map(i => `<li>${i.etiqueta} - <span>${i.valor}</span></li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
 
-    // Recorremos cada botón y le damos funcionalidad
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Quitamos la clase 'active' a todos los botones y se la damos al actual
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+                    return container.querySelectorAll('.work-card');
+                });
+        }
 
-        const filter = btn.getAttribute('data-filter');
+        // Función para inicializar filtros
+        function inicializarFiltros(projects) {
+            const filterButtons = document.querySelectorAll('.filter-btn');
 
-        projects.forEach(proj => {
-          // Si el filtro es 'all' mostramos todo
-          // Si no, verificamos que el proyecto contenga la clase correspondiente
-          if (filter === 'all' || proj.classList.contains(filter.replace('.', ''))) {
-            proj.style.display = 'block';
-          } else {
-            proj.style.display = 'none';
-          }
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Activar botón
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    projects.forEach(proj => {
+                        if (filter === 'all' || proj.classList.contains(filter.replace('.', ''))) {
+                            proj.style.display = 'block';
+                        } else {
+                            proj.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Ejecutar todo
+        generarProyectos().then(projects => {
+            inicializarFiltros(projects);
         });
-      });
-    });
 
+
+
+
+
+    
     // ---- Lista de artículos dinámica ----
     const articulos = [
     {
@@ -1031,15 +931,6 @@
       inp.addEventListener('focus',function(){this.parentNode.classList.add('focus')});
       inp.addEventListener('blur',function(){if(!this.value) this.parentNode.classList.remove('focus')});
     });
-
-    // ---- Contador de visitas simple (localStorage) ----
-    (function(){
-      const key = 'visitas_bitacora_jimena';
-      let visitas = parseInt(localStorage.getItem(key) || '0',10);
-      visitas++;
-      localStorage.setItem(key, visitas);
-      document.getElementById('contador-visitas').textContent = `Visitas (local): ${visitas}`;
-    })();
 
     // ---- Pequeña animación al cargar articulo dinamico (si hay contenido) ----
     window.addEventListener('load', ()=>{
