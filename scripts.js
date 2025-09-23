@@ -248,3 +248,89 @@ document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click', (e)=>{
     const target = document.querySelector(a.getAttribute('href'));
     if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
 }));
+
+// Función para actualizar la hora en tiempo real
+function updateClock() {
+const now = new Date();
+document.getElementById("clock").textContent = now.toLocaleTimeString();
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// Geolocalización
+function success(pos) {
+const lat = pos.coords.latitude;
+const lon = pos.coords.longitude;
+
+// Llamar a la API de Open-Meteo para convertir coordenadas en ciudad/país
+fetch(`https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=es`)
+    .then(res => res.json())
+    .then(data => {
+    if (data && data.results && data.results.length > 0) {
+        const place = data.results[0];
+        document.getElementById("location").textContent = `${place.name}, ${place.country}`;
+    } else {
+        document.getElementById("location").textContent = "Ubicación no encontrada";
+    }
+    })
+    .catch(() => {
+    document.getElementById("location").textContent = "Error obteniendo ubicación";
+    });
+}
+
+function error() {
+document.getElementById("location").textContent = "Permiso denegado o no disponible";
+}
+
+// Pedir ubicación al usuario
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(success, error);
+} else {
+document.getElementById("location").textContent = "Geolocalización no soportada";
+}
+
+
+// ---- API Calidad del Aire (Open-Meteo) ----
+window.addEventListener("load", async () => {
+  const locations = [
+    { name: "pe", lat: -12.0566, lon: -77.1181 }, // Lima
+    { name: "es", lat: 43.0502, lon: -2.2009 }   // Beasain
+  ];
+
+  for (const loc of locations) {
+    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${loc.lat}&longitude=${loc.lon}&current=pm10,pm2_5,carbon_monoxide&timezone=auto`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const current = data.current;
+
+      // Insertamos los datos en la tarjeta correspondiente
+      document.getElementById(`pm10-${loc.name}`).textContent = current.pm10;
+      document.getElementById(`pm25-${loc.name}`).textContent = current.pm2_5;
+      document.getElementById(`co-${loc.name}`).textContent = current.carbon_monoxide;
+    } catch (err) {
+      console.error("Error cargando datos:", err);
+    }
+  }
+});
+
+// Modal
+const modal = document.getElementById("infoModal");
+const btn = document.getElementById("infoBtn");
+const span = document.querySelector(".close");
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+

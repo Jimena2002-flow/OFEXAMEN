@@ -20,7 +20,13 @@
         <p> · Medio Ambiente y Seguridad · </p>
       </div>
     </div>
+
   </header>
+  <!-- Botón flotante con información -->
+  <div id="user-info-float">
+  <p><strong>📍Ubi</strong> <span id="location">Detectando...</span></p>
+  <p><strong>⏰Hora Actual</strong> <span id="clock"></span></p>
+  </div>
 
   <!-- Navbar -->
   <div class="navbar">
@@ -84,12 +90,61 @@
     </div>
 
     <hr style="margin:12px 0"/>
+    <div id="calidad-aire">
+      <h2>🌬️ Calidad del Aire en Tiempo Real</h2>
+      <button id="infoBtn">ℹ️ Más información</button>
+    </div>
+    <section id="air-quality"> 
+        <div class="aq-card">
+          <h3>Lima, Perú </h3>
+          <div class="aq-info">
+            <p><strong>PM10:</strong> <span id="pm10">Cargando...</span> µg/m³</p>
+            <p><strong>PM2.5:</strong> <span id="pm25">Cargando...</span> µg/m³</p>
+            <p><strong>Monóxido de Carbono (CO):</strong> <span id="co">Cargando...</span> µg/m³</p>
+            <p><strong>Índice Europeo AQI:</strong> <span id="europe_aqi">Cargando...</span></p>
+            <p><strong>Índice USA AQI:</strong> <span id="usa_aqi">Cargando...</span></p>
+          </div>
+        </div>
+        <div class="aq-card">
+          <h3>Beasain, España</h3>
+          <div class="aq-info">
+            <p><strong>PM10:</strong> <span id="pm10-es">Cargando...</span> µg/m³</p>
+            <p><strong>PM2.5:</strong> <span id="pm25-es">Cargando...</span> µg/m³</p>
+            <p><strong>CO:</strong> <span id="co-es">Cargando...</span> µg/m³</p>
+            <p><strong>Índice Europeo AQI:</strong> <span id="europe_aqi-es">Cargando...</span></p>
+            <p><strong>Índice USA AQI:</strong> <span id="usa_aqi-es">Cargando...</span></p>
+          </div>
+        </div>
 
-    <section id="clima">
-      <h2>🌍Consulta el clima actual en tu ciudad:</h2>
-        <button id="btnTiempo">Dime el tiempo</button>
-        <p id="resultado"></p>
-        <img id="icon" alt="Icono del tiempo" style="display:none">
+      <!-- Modal -->
+      <div id="infoModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3>📖 Guía de Variables de Calidad del Aire</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Unidad</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>PM10 / PM2.5</td><td>µg/m³</td><td>Materia particulada en suspensión (diámetro <10 µm o <2.5 µm).</td></tr>
+              <tr><td>Monóxido de Carbono (CO)</td><td>µg/m³</td><td>Gas tóxico generado por combustión incompleta.</td></tr>
+              <tr><td>Dióxido de Nitrógeno (NO₂)</td><td>µg/m³</td><td>Gas contaminante procedente del tráfico y combustión.</td></tr>
+              <tr><td>Dióxido de Azufre (SO₂)</td><td>µg/m³</td><td>Gas contaminante de procesos industriales y quema de combustibles fósiles.</td></tr>
+              <tr><td>Ozono (O₃)</td><td>µg/m³</td><td>Gas que a nivel superficial es contaminante, afecta la salud respiratoria.</td></tr>
+              <tr><td>Dióxido de Carbono (CO₂)</td><td>ppm</td><td>Gas de efecto invernadero cerca de la superficie.</td></tr>
+              <tr><td>Metano (CH₄)</td><td>µg/m³</td><td>Gas de efecto invernadero liberado en procesos naturales e industriales.</td></tr>
+              <tr><td>Polvo</td><td>µg/m³</td><td>Partículas de polvo en el aire (ej. polvo sahariano).</td></tr>
+              <tr><td>Índice UV</td><td>Índice</td><td>Medida de radiación ultravioleta (con y sin nubes).</td></tr>
+              <tr><td>Índice Europeo AQI</td><td>0–100+</td><td>Escala de calidad del aire en Europa (0=bueno, >100=extremadamente malo).</td></tr>
+              <tr><td>Índice USA AQI</td><td>0–500</td><td>Escala de calidad del aire en EE.UU. (0=bueno, 500=peligroso).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <hr style="margin:12px 0"/>
@@ -221,9 +276,7 @@
           <input type="text" id="name" name="name" placeholder="Tu nombre" required>
           <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
           <textarea id="message" name="message" rows="4" placeholder="Tu mensaje" required></textarea>
-          
-          <!-- Campo para adjuntar archivo -->
-          <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.png,.jpg">
+        
 
           <button type="submit">Enviar</button>
         </form>
@@ -232,7 +285,10 @@
     </section>
 
 
-  <footer>
+ 
+
+  </main>
+<footer>
     <div class="footer-container">
       <div class="footer-info">
         <h3>🌿 Jimena Flores</h3>
@@ -251,9 +307,7 @@
         <p class="footer-copy">© 2025. Todos los derechos reservados.</p>
       </div>
     </div>
-  </footer>    
-
-  </main>
+  </footer>   
 
 <script src="scripts.js">
  </script>

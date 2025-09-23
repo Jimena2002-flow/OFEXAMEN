@@ -84,6 +84,50 @@ nav a:hover { background: #f1f1f1; }
 
 main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
 
+/* Botón flotante circular */
+#user-info-float {
+  position: fixed;        /* Siempre visible */
+  top: 90%;               /* Centrado vertical */
+  right: 20px;            /* A 20px del borde derecho */
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  background: #a2d8d1;    /* Color principal */
+  color: #3a2d2d;
+  border-radius: 5%;     /* Circular */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  text-align:left;
+  font-size: 0.95rem;
+  padding: 70px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 9989;
+}
+
+/* Efecto hover */
+#user-info-float:hover {
+  transform: translateY(-50%) scale(1.1);
+  background: #009e88;
+}
+
+/* Estilo para los valores dentro */
+#user-info-float span {
+  font-weight: bold;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Ajuste de párrafos internos */
+#user-info-float p {
+  margin: 0;
+  line-height: 1;
+}
+
+
 /* ===============================
     Hero / Destacado
 =============================== */
@@ -168,9 +212,6 @@ main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
 }
 .articulos h3 { margin: 0 0 .4rem; }
 
-/* ===============================
-    Carousel
-=============================== */
 .carousel {
     position: relative;
     width: 100%;
@@ -196,9 +237,6 @@ main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* ===============================
-    Proyectos / Portfolio
-=============================== */
 #proyectos {
     margin-top: 2rem;
     padding: 0 1rem;
@@ -273,7 +311,6 @@ main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
     color: #444;
 }
 
-/* Animación filtrado */
 .work-card[style*="display: none"] {
     opacity: 0;
     transform: scale(0.9);
@@ -313,9 +350,6 @@ text-align: center;
 }
 
 
-/* ===============================
-    Sobre Mí
-=============================== */
 .sobre-mi {
     position: relative;
     padding: 4rem 1rem;
@@ -363,6 +397,111 @@ text-align: center;
 .btn-cv:hover {
     background: #e8f34a;
     transform: scale(1.05);
+}
+
+#calidad-aire {
+  padding: 10px 5px;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #f0f4c3, #dcedc8);
+  text-align: center;
+}
+#air-quality {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* separación entre tarjetas */
+  flex-wrap: wrap; /* que se acomoden en pantallas pequeñas */
+}
+
+
+.aq-card {
+  background: linear-gradient(123deg, #a3bd33,  #436d3dbb);
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
+
+.aq-card h3 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: black;
+}
+
+.aq-info p {
+  margin: 8px 0;
+  font-size: 1.05em;
+}
+
+/* Botón */
+#infoBtn {
+  background: #fff;
+  color: #411902;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+}
+
+#infoBtn:hover {
+  background: #f0f0f0;
+
+  
+}
+
+/* Modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal-content th, .modal-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.modal-content th {
+  background: #2f80ed;
+  color: white;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: red;
 }
 
 /* ===============================
@@ -469,7 +608,7 @@ Popup de Portfolio
 }
 
 .contact-form button {
-  background: #007BFF;
+  background: #1f5215;
   color: white;
   border: none;
   font-size: 16px;
@@ -478,6 +617,65 @@ Popup de Portfolio
 
 .contact-form button:hover {
   background: #0056b3;
+}
+
+footer {
+  background: #4b4646; 
+  color: #f1f1f1;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #a5d6a7; 
+}
+
+.footer-info p {
+  margin: 0.5rem 0 1rem;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.social-icons {
+  margin: 1rem 0 1.5rem;
+}
+
+.social-icons h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  color: #f1f1f1;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 0.6rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1); 
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 1rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
 }
 
 
@@ -504,16 +702,6 @@ Popup de Portfolio
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    }
-    .social-icons {
-    justify-content: center;
-    }
-    .footer-form form {
-    width: 100%;
-    }
 }
 @media (max-width: 600px) {
     .portfolio-popup-inner {
@@ -523,4 +711,12 @@ Popup de Portfolio
     .pp-close {
     font-size: 1.6rem;
     }
+    .footer-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .social-icons img {
+    width: 28px;
+    height: 28px;
+  }
 }
