@@ -261,33 +261,37 @@ updateClock();
 function success(pos) {
 const lat = pos.coords.latitude;
 const lon = pos.coords.longitude;
-
-// Llamar a la API de Open-Meteo para convertir coordenadas en ciudad/país
-fetch(`https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=es`)
-    .then(res => res.json())
-    .then(data => {
-    if (data && data.results && data.results.length > 0) {
-        const place = data.results[0];
-        document.getElementById("location").textContent = `${place.name}, ${place.country}`;
-    } else {
-        document.getElementById("location").textContent = "Ubicación no encontrada";
-    }
-    })
-    .catch(() => {
-    document.getElementById("location").textContent = "Error obteniendo ubicación";
-    });
-}
-
-function error() {
-document.getElementById("location").textContent = "Permiso denegado o no disponible";
 }
 
 // Pedir ubicación al usuario
 if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(success, error);
+    navigator.geolocation.getCurrentPosition(success, error);
 } else {
-document.getElementById("location").textContent = "Geolocalización no soportada";
+document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
 }
+
+function success(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+
+// Llamar a la API de Open-Meteo para convertir coordenadas en ciudad/país
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+    .then(response => response.json())
+    .then(data => {
+        const weather = data.current_weather;
+        document.getElementById('weather').innerHTML = `
+        <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
+        
+        <strong>Temperatura:</strong> ${weather.temperature}°C<br>
+        <strong>Viento:</strong> ${weather.windspeed} km/h
+        `;
+    })
+    .catch(() => {
+        document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
+    });
+}
+
 
 
 // ---- API Calidad del Aire (Open-Meteo) ----
