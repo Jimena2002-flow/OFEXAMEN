@@ -583,6 +583,38 @@ Popup de Portfolio
     to   { transform: scale(1); opacity: 1; }
 }
 
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  margin: 1em auto;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+#weather {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #333;
+}
+
+#weather strong {
+  color: #00796b;
+}
+
+#map {
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .contact-form {
   max-width: 500px;
   margin: auto;

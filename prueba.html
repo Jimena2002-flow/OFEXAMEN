@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tiempo actual</title>
+</head>
+<body>
+  <h1>Tiempo actual en tu ubicación</h1>
+  <div id="weather"></div>
+  <script>
+    // Paso 1: Obtener la ubicación del usuario
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
+    }
+
+    function success(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      // Paso 2: Llamar a la API de Open-Meteo
+      fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+        .then(response => response.json())
+        .then(data => {
+          const weather = data.current_weather;
+          document.getElementById('weather').innerHTML = `
+            <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
+           
+            <strong>Temperatura:</strong> ${weather.temperature}°C<br>
+            <strong>Viento:</strong> ${weather.windspeed} km/h
+          `;
+        })
+        .catch(() => {
+          document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
+        });
+    }
+
+    function error() {
+      document.getElementById('weather').textContent = 'No se pudo obtener tu ubicación.';
+    }
+  </script>
+</body>
+</html>

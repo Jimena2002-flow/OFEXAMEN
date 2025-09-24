@@ -207,20 +207,6 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     from_email: email,
     message: message,
   };
-
-  // 5. Enviar con archivo adjunto (si hay)
-  if (fileInput.files.length > 0) {
-    const file = fileInput.files[0];
-
-    const reader = new FileReader();
-    reader.onload = function () {
-      params.file = reader.result.split(",")[1]; // codificar en Base64
-      sendEmail(params, serviceID, templateID);
-    };
-    reader.readAsDataURL(file);
-  } else {
-    sendEmail(params, serviceID, templateID);
-  }
 });
 
 // ---- Función para enviar con EmailJS ----
@@ -264,35 +250,37 @@ const lon = pos.coords.longitude;
 }
 
 // Pedir ubicación al usuario
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error);
-} else {
-document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
-}
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+    document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
+    }
 
-function success(position) {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+    function success(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
 
+        // Paso 2: Llamar a la API de Open-Meteo
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+            .then(response => response.json())
+            .then(data => {
+            const weather = data.current_weather;
+            document.getElementById('weather').innerHTML = `
+                <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
+            
+                <strong>Temperatura:</strong> ${weather.temperature}°C<br>
+                <strong>Viento:</strong> ${weather.windspeed} km/h
+            `;
+            })
+            .catch(() => {
+            document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
+        });
+    }
 
-// Llamar a la API de Open-Meteo para convertir coordenadas en ciudad/país
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
-    .then(response => response.json())
-    .then(data => {
-        const weather = data.current_weather;
-        document.getElementById('weather').innerHTML = `
-        <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
-        
-        <strong>Temperatura:</strong> ${weather.temperature}°C<br>
-        <strong>Viento:</strong> ${weather.windspeed} km/h
-        `;
-    })
-    .catch(() => {
-        document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
-    });
-}
-
-
+    function error() {
+      document.getElementById('weather').textContent = 'No se pudo obtener tu ubicación.';
+    }
+    
 
 // ---- API Calidad del Aire (Open-Meteo) ----
 window.addEventListener("load", async () => {
@@ -337,4 +325,43 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+  
+// Paso 1: Obtener la ubicación del usuario
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+} else {
+    document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
+}
 
+function success(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    // Paso 2: Llamar a la API de Open-Meteo
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+    .then(response => response.json())
+    .then(data => {
+        const weather = data.current_weather;
+        document.getElementById('weather').innerHTML = `
+        <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
+        <strong>Temperatura:</strong> ${weather.temperature}°C<br>
+        <strong>Viento:</strong> ${weather.windspeed} km/h
+        `;
+    })
+    .catch(() => {
+        document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
+    });
+
+    // Paso 3: Mostrar el mapa con Leaflet
+    const map = L.map('map').setView([lat, lon], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker([lat, lon]).addTo(map)
+    .bindPopup('📍 ¡Estás aquí!')
+    .openPopup();
+}
+
+function error() {
+    document.getElementById('weather').textContent = 'No se pudo obtener tu ubicación.';
+}
