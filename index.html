@@ -22,11 +22,14 @@
     </div>
 
   </header>
-  <!-- Botón flotante con información -->
+  <!-- Widget flotante con información -->
   <div id="user-info-float">
-  <p><strong>📍Ubi</strong> <span id="location">Detectando...</span></p>
-  <p><strong>⏰Hora Actual</strong> <span id="clock"></span></p>
+    <div class="info-header">🌍 Mi Ubicación</div>
+    <p><strong>📍 Ubicación:</strong> <span id="location">Detectando...</span></p>
+    <p><strong>⏰ Hora:</strong> <span id="clock"></span></p>
+    <p><strong>🌡️ Tiempo:</strong> <span id="weather">Cargando...</span></p>
   </div>
+
 
   <!-- Navbar -->
   <div class="navbar">
@@ -208,16 +211,7 @@
         </div>
 
     </section>
-    <hr style="margin: 40px;">
 
-    <section>
-        <h1>Tiempo actual en tu ubicación</h1>
-
-        <div class="card">
-          <div id="weather">Detectando tu ubicación...</div>
-          <div id="map"></div>
-        </div>
-    </section>
   <hr style="margin: 40px;">
 
       <!-- Artículos resumen -->
@@ -276,23 +270,18 @@
   </section>
       <hr style="margin: 40px;">
       <!-- Formulario de contacto -->
-    <section id="contacto">
-      <div class="contact-form">
-        <h3>📩 Contáctame</h3>
-        <form id="contactForm">
-          <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-          <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
-          <textarea id="message" name="message" rows="4" placeholder="Tu mensaje" required></textarea>
-        
-
-          <button type="submit">Enviar</button>
-        </form>
-        <p id="formMessage"></p>
-      </div>
-    </section>
-
-
- 
+        <section id="contacto">
+          <div class="contact-form">
+            <h3>📩 Contáctame</h3>
+            <form id="contactForm">
+              <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+              <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+              <textarea id="message" name="message" rows="4" placeholder="Tu mensaje" required></textarea>
+              <button type="submit">Enviar</button>
+            </form>
+            <p id="formMessage"></p>
+          </div>
+        </section>
 
   </main>
 <footer>
@@ -316,13 +305,11 @@
     </div>
   </footer>   
 
-<script src="scripts.js">
- </script>
+
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("23_malEP4HCSrZCVS"); // lo copias desde tu EmailJS dashboard
-</script>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="scripts.js"></script>
+
 
 
 </body>

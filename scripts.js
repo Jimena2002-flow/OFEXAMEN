@@ -1,3 +1,68 @@
+// Función para actualizar la hora en tiempo real
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent = now.toLocaleTimeString();
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// Pedir ubicación al usuario
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+} else {
+  document.getElementById('location').textContent = 'No soportado';
+}
+
+function success(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  // Mostrar ubicación aproximada
+  document.getElementById('location').textContent = `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
+
+  // Llamar a la API de Open-Meteo
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+    .then(response => response.json())
+    .then(data => {
+      const weather = data.current_weather;
+      document.getElementById('weather').textContent = 
+        `${weather.temperature}°C, viento ${weather.windspeed} km/h`;
+    })
+    .catch(() => {
+      document.getElementById('weather').textContent = 'Error al obtener datos';
+    });
+}
+
+function error() {
+  document.getElementById('location').textContent = 'Error al detectar ubicación';
+  document.getElementById('weather').textContent = 'No disponible';
+}
+
+// ---- API Calidad del Aire (Open-Meteo) ----
+window.addEventListener("load", async () => {
+  const locations = [
+    { name: "pe", lat: -12.0566, lon: -77.1181 }, // Lima
+    { name: "es", lat: 43.0502, lon: -2.2009 }   // Beasain
+  ];
+
+  for (const loc of locations) {
+    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${loc.lat}&longitude=${loc.lon}&current=pm10,pm2_5,carbon_monoxide&timezone=auto`;
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const current = data.current;
+
+      // Insertamos los datos en la tarjeta correspondiente
+      document.getElementById(`pm10-${loc.name}`).textContent = current.pm10;
+      document.getElementById(`pm25-${loc.name}`).textContent = current.pm2_5;
+      document.getElementById(`co-${loc.name}`).textContent = current.carbon_monoxide;
+    } catch (err) {
+      console.error("Error cargando datos:", err);
+    }
+  }
+});
+
 // Interactividad: menú responsive
 const menuToggle = document.getElementById('menu-toggle');
 const navList = document.getElementById('nav-list');
@@ -184,43 +249,6 @@ document.querySelectorAll('.input').forEach(inp=>{
     inp.addEventListener('blur',function(){if(!this.value) this.parentNode.classList.remove('focus')});
 });
 
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  // 1. Capturar datos del formulario
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-  const fileInput = document.getElementById("file");
-
-  // 2. Guardar datos en LocalStorage (JSON.stringify para guardar como string)
-  const formData = { name, email, message, date: new Date().toISOString() };
-  localStorage.setItem("lastContact", JSON.stringify(formData));
-
-  // 3. Configurar parámetros de EmailJS
-  const serviceID = "service_45lo6zg";   // tu Service ID
-  const templateID = "template_h901arq"; // tu Template ID
-
-  // 4. Crear objeto con los valores
-  const params = {
-    from_name: name,
-    from_email: email,
-    message: message,
-  };
-});
-
-// ---- Función para enviar con EmailJS ----
-function sendEmail(params, serviceID, templateID) {
-  emailjs.send(serviceID, templateID, params)
-    .then(() => {
-      document.getElementById("formMessage").textContent = "✅ Mensaje enviado con éxito";
-      document.getElementById("contactForm").reset();
-    })
-    .catch((err) => {
-      document.getElementById("formMessage").textContent = "❌ Error al enviar: " + JSON.stringify(err);
-    });
-}
-
 
 // ---- Pequeña animación al cargar articulo dinamico (si hay contenido) ----
 window.addEventListener('load', ()=>{
@@ -234,78 +262,6 @@ document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click', (e)=>{
     const target = document.querySelector(a.getAttribute('href'));
     if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
 }));
-
-// Función para actualizar la hora en tiempo real
-function updateClock() {
-const now = new Date();
-document.getElementById("clock").textContent = now.toLocaleTimeString();
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// Geolocalización
-function success(pos) {
-const lat = pos.coords.latitude;
-const lon = pos.coords.longitude;
-}
-
-// Pedir ubicación al usuario
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-    document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
-    }
-
-    function success(position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        // Paso 2: Llamar a la API de Open-Meteo
-        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
-            .then(response => response.json())
-            .then(data => {
-            const weather = data.current_weather;
-            document.getElementById('weather').innerHTML = `
-                <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
-            
-                <strong>Temperatura:</strong> ${weather.temperature}°C<br>
-                <strong>Viento:</strong> ${weather.windspeed} km/h
-            `;
-            })
-            .catch(() => {
-            document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
-        });
-    }
-
-    function error() {
-      document.getElementById('weather').textContent = 'No se pudo obtener tu ubicación.';
-    }
-    
-
-// ---- API Calidad del Aire (Open-Meteo) ----
-window.addEventListener("load", async () => {
-  const locations = [
-    { name: "pe", lat: -12.0566, lon: -77.1181 }, // Lima
-    { name: "es", lat: 43.0502, lon: -2.2009 }   // Beasain
-  ];
-
-  for (const loc of locations) {
-    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${loc.lat}&longitude=${loc.lon}&current=pm10,pm2_5,carbon_monoxide&timezone=auto`;
-
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      const current = data.current;
-
-      // Insertamos los datos en la tarjeta correspondiente
-      document.getElementById(`pm10-${loc.name}`).textContent = current.pm10;
-      document.getElementById(`pm25-${loc.name}`).textContent = current.pm2_5;
-      document.getElementById(`co-${loc.name}`).textContent = current.carbon_monoxide;
-    } catch (err) {
-      console.error("Error cargando datos:", err);
-    }
-  }
-});
 
 // Modal
 const modal = document.getElementById("infoModal");
@@ -325,43 +281,32 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-  
-// Paso 1: Obtener la ubicación del usuario
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error);
-} else {
-    document.getElementById('weather').textContent = 'La geolocalización no es compatible.';
-}
+// Inicializar con tu Public Key
+emailjs.init("23_malEP4HCSrZCVS");
 
-function success(position) {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+e.preventDefault();
 
-    // Paso 2: Llamar a la API de Open-Meteo
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
-    .then(response => response.json())
-    .then(data => {
-        const weather = data.current_weather;
-        document.getElementById('weather').innerHTML = `
-        <strong>Ubicación:</strong> ${lat.toFixed(2)}, ${lon.toFixed(2)}<br>
-        <strong>Temperatura:</strong> ${weather.temperature}°C<br>
-        <strong>Viento:</strong> ${weather.windspeed} km/h
-        `;
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const message = document.getElementById("message").value;
+
+const serviceID = "service_45lo6zg";
+const templateID = "template_h901arq";
+
+const params = {
+    from_name: name,
+    from_email: email,
+    message: message,
+};
+
+emailjs.send(serviceID, templateID, params)
+    .then(() => {
+    document.getElementById("formMessage").textContent = "✅ Mensaje enviado con éxito";
+    document.getElementById("contactForm").reset();
     })
-    .catch(() => {
-        document.getElementById('weather').textContent = 'No se pudo obtener el tiempo.';
+    .catch((err) => {
+    document.getElementById("formMessage").textContent = "❌ Error al enviar: " + JSON.stringify(err);
     });
+});
 
-    // Paso 3: Mostrar el mapa con Leaflet
-    const map = L.map('map').setView([lat, lon], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-    L.marker([lat, lon]).addTo(map)
-    .bindPopup('📍 ¡Estás aquí!')
-    .openPopup();
-}
-
-function error() {
-    document.getElementById('weather').textContent = 'No se pudo obtener tu ubicación.';
-}

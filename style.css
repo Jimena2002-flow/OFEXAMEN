@@ -84,47 +84,42 @@ nav a:hover { background: #f1f1f1; }
 
 main { max-width: var(--maxW); margin: 1.5rem auto; padding: 0 1rem; }
 
-/* Botón flotante circular */
+/* Widget flotante */
 #user-info-float {
-  position: fixed;        /* Siempre visible */
-  top: 90%;               /* Centrado vertical */
-  right: 20px;            /* A 20px del borde derecho */
-  transform: translateY(-50%);
-  width: 80px;
-  height: 80px;
-  background: #a2d8d1;    /* Color principal */
-  color: #3a2d2d;
-  border-radius: 5%;     /* Circular */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items:center;
-  text-align:left;
-  font-size: 0.95rem;
-  padding: 70px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  cursor: pointer;
-  transition: transform 0.3s;
-  z-index: 9989;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg,#97d9db, #356930);
+  color: white;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 14px;
+  max-width: 220px;
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto hover */
 #user-info-float:hover {
-  transform: translateY(-50%) scale(1.1);
-  background: #009e88;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
 
-/* Estilo para los valores dentro */
-#user-info-float span {
+/* Título interno */
+#user-info-float .info-header {
   font-weight: bold;
-  display: block;
-  margin-top: 2px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 5px;
 }
 
-/* Ajuste de párrafos internos */
+/* Párrafos */
 #user-info-float p {
-  margin: 0;
-  line-height: 1;
+  margin: 6px 0;
+  line-height: 1.4;
 }
 
 
